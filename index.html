@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <section class="sidebar player-side">
+      <img src="" alt="human image">
+      <h2 class="sidebar-title">Human</h2>
+      <p class="score-display">Score: 0</p>
+    </section>
+    <section class="main-container">
+      <h1>Rock, Paper, Scissors</h1>
+      <h3 class="prompt">Choose your game!</h3>
+      <button class="game-choice" id="classic">
+        <h4>CLASSIC</h4>
+        <p>rock > scissors<br>paper > rock<br>scissors > paper</p>
+      </button>
+      <button class="game-choice" id="classic">
+        <h4>DIFFICULT</h4>
+        <p>rock > scissors & lizard<br>paper > rock & alien<br>scissors > paper & lizard<br>lizard > paper & alien<br>alien > scissors & rock</p>
+      </button>
+      <section class="choices">
+        <button class="choice" id="rock">rock</button>
+        <button class="choice" id="paper">paper</button>
+        <button class="choice" id="scissors">scissors</button>
+        <button class="choice" id="lizard">lizard</button>
+        <button class="choice" id="alien">alien</button>
+        <button class="choice" id="predator">predator</button>
+        <button class="choice" id="choice4">choice4</button>
+        <button class="choice" id="choice5">choice5</button>
+      </section>
+    </section>
+    <section class="sidebar computer-side">
+      <img src="" alt="computer image">
+      <h2 class="sidebar-title">Computer</h2>
+      <p class="score-display" id="computerScore">Score: 0</p>
+    </section>
+  </body>
+  <script type="text/javascript" src="main.js"></script>
+  <script type="text/javascript" src="game.js"></script>
+  <script type="text/javascript" src="player.js"></script>
+</html>
