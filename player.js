@@ -11,24 +11,15 @@ class Player {
       wins: this.wins,
     }
     var stringifiedPlayerData = JSON.stringify(playerData);
-    localStorage.setItem('storedPlayerData', stringifiedPlayerData);
+    localStorage.setItem(playerData.name, stringifiedPlayerData);
   }
   retrieveWinsFromStorage() {
-    var retrievedPlayerData = localStorage.getItem('storedPlayerData');
+    var retrievedPlayerData = localStorage.getItem(playerData.name);
     var parsedPlayerData = JSON.parse(retrievedPlayerData);
     return parsedPlayerData;
   }
   takeTurn(gameType, targetId) {
-    var choices = {
-      0: 'rock',
-      1: 'paper',
-      2: 'scissors',
-      3: 'lizard',
-      4: 'alien',
-      5: 'predator',
-      6: 'choice4',
-      7: 'choice5'
-    }
+    var choices = ['rock', 'paper', 'scissors', 'lizard', 'alien', 'predator', 'choice4', 'choice5'];
     if (this.name = 'human') {
       return targetId;
     }
