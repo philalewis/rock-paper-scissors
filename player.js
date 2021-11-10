@@ -18,7 +18,27 @@ class Player {
     var parsedPlayerData = JSON.parse(retrievedPlayerData);
     return parsedPlayerData;
   }
-  takeTurn(choice) {
-    
+  takeTurn(gameType, targetId) {
+    var choices = {
+      0: 'rock',
+      1: 'paper',
+      2: 'scissors',
+      3: 'lizard',
+      4: 'alien',
+      5: 'predator',
+      6: 'choice4',
+      7: 'choice5'
+    }
+    if (this.name = 'human') {
+      return targetId;
+    }
+    if (gameType === 'classic') {
+      var randomClassicChoice = Math.floor(Math.random() * 3);
+      return choices[randomClassicChoice];
+    }
+    if (gameType === 'difficult') {
+      var randomDifficultChoice = Math.floor(Math.random() * 5 + 3);
+      return choices[randomDifficultChoice];
+    }
   }
 }
