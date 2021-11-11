@@ -3,6 +3,7 @@ class Player {
     this.name = player.name;
     this.token = player.token;
     this.wins = player.wins || 0;
+    this.choice = '';
   }
   saveWinsToStorgae() {
     var playerData = {

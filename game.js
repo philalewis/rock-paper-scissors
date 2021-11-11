@@ -7,33 +7,46 @@ class Game {
     this.gameType = gameType;
     this.winner;
   }
-  checkForWin(humanChoice, ComputerChoice) {
-    // Check who won and return the winner
+  checkForWin(humanChoice, computerChoice) {
     if (this.gameType === 'classic') {
-      if (this.humanChoice === 'rock') {
-        if (this.computerChoice === 'paper') {
-          return this.winner = 'computer';
-        } else if (this.computerChoice === 'scissors') {
-          return this.winner = 'human';
-        }
-      } else if (this.humanChoice === 'paper') {
-        if (this.computerChoice === 'rock') {
-          return this.winner = 'human';
-        } else if (this.computerChoice === 'scissors') {
-          return this.winner = 'computer';
-        }
-      } else if (this.humanChoice === 'scissors') {
-        if (this.computerChoice === 'paper') {
-          return this.winner = 'human';
-        } else if (this.computerChoice === 'rock') {
-          return this.winner = 'computer';
-        }
+      if (humanChoice === 'rock' && 
+        computerChoice === 'scissors') {
+          return this.winner = 'human'
+      } else if (humanChoice === 'paper' &&
+        computerChoice === 'rock') {
+        return this.winner = 'human'
+      } else if (humanChoice === 'scissors' &&
+        computerChoice === 'paper') {
+          return this.winner = 'human'
+      } else {
+        return this.winner = 'computer'
+      } 
+    } else if (this.gameType === 'difficult') {
+      if (humanChoice === 'lizard' &&
+      (computerChoice === 'alien' || 
+      computerChoice === 'predator')) {
+        return this.winner = 'human';
+      } else if (humanChoice === 'alien' &&
+      (computerChoice === 'predator' || 
+      computerChoice === 'choice4')) {
+        return this.winner = 'human';
+      } else if (humanChoice === 'predator' &&
+      (computerChoice === 'choice4' || 
+      computerChoice === 'choice5')) {
+        return this.winner = 'human';
+      } else if (humanChoice === 'choice4' &&
+      (computerChoice === 'choice5' ||
+      computerChoice === 'lizard')) {
+        return this.winner = 'human'
+      } else if (humanChoice === 'choice5' && 
+      (computerChoice === 'lizard' ||
+      computerChoice === 'alien')) {
+        return this.winner = 'human';
+      } else {
+        return this.winner = 'computer'
       }
-    // } else if (this.gameType === 'difficult') {
-    //   if (this.humanChoice === 'lizard')
     }
   }
-
   checkForTie() {
     if (this.humanChoice === this.computerChoice) {
       return true;
@@ -41,9 +54,13 @@ class Game {
     return false;
   }
   gameReset() {
-    // Timout function here. Data stored and displayed before this. Should return to game screen
-    setTimeout(function() {
+    this.humanChoice = '';
+    this.computerChoice = '';
+    this.winner = '';
 
-    }, 2000)
+    // Timout function here. Data stored and displayed before this. Should return to game screen
+    // setTimeout(function() {
+
+    // }, 2000)
   }
 }

@@ -3,10 +3,16 @@ var computerScore = document.querySelector('#computerScore');
 var rock = document.querySelector('#rock');
 var paper = document.querySelector('#paper');
 var scissors = document.querySelector('#scissors');
+var lizard = document.querySelector('#lizard');
+var alien = document.querySelector('#alien');
+var predator = document.querySelector('#predator');
+var choice4 = document.querySelector('#choice4');
+var choice5 = document.querySelector('#choice5');
 
-var choices = document.querySelector('.choice');
+var choices = document.querySelectorAll('.choice');
 
 var currentGame;
+
 
 // choices.addEventListener('click', function(event) {
 //   playGame() {
