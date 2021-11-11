@@ -47,8 +47,8 @@ class Game {
       }
     }
   }
-  checkForTie() {
-    if (this.humanChoice === this.computerChoice) {
+  checkForTie(humanChoice, computerChoice) {
+    if (humanChoice === computerChoice) {
       return true;
     }
     return false;

@@ -12,7 +12,7 @@
     <section class="main-container">
       <h1>Rock, Paper, Scissors</h1>
       <h3 class="prompt">Choose your game!</h3>
-      <section class="game-container">
+      <section class="game-choice-container">
         <button class="game-choice-button" id="classic">
           <h4>CLASSIC</h4>
           <p>rock > scissors<br>
@@ -20,7 +20,7 @@
             scissors > paper
           </p>
         </button>
-        <button class="game-choice-button" id="classic">
+        <button class="game-choice-button" id="difficult">
           <h4>DIFFICULT</h4>
           <p>lizard > alien & predator<br>
             alien > predator & choice4<br>
@@ -30,15 +30,19 @@
           </p>
         </button>
       </section>
-      <section class="choices hidden">
-        <button class="choice" id="rock">rock</button>
-        <button class="choice" id="paper">paper</button>
-        <button class="choice" id="scissors">scissors</button>
-        <button class="choice" id="lizard">lizard</button>
-        <button class="choice" id="alien">alien</button>
-        <button class="choice" id="predator">predator</button>
-        <button class="choice" id="choice4">choice4</button>
-        <button class="choice" id="choice5">choice5</button>
+      <section class="choices">
+        <section class="classic-buttons hidden">
+          <button class="choice" id="rock">rock</button>
+          <button class="choice" id="paper">paper</button>
+          <button class="choice" id="scissors">scissors</button>
+        </section>
+        <section class="difficult-buttons hidden">
+          <button class="choice" id="lizard">lizard</button>
+          <button class="choice" id="alien">alien</button>
+          <button class="choice" id="predator">predator</button>
+          <button class="choice" id="choice4">choice4</button>
+          <button class="choice" id="choice5">choice5</button>
+        </section>
       </section>
     </section>
     <section class="sidebar computer-side">
