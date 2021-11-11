@@ -10,9 +10,30 @@ class Game {
   checkForWin(humanChoice, ComputerChoice) {
     // Check who won and return the winner
     if (this.gameType === 'classic') {
-      
+      if (this.humanChoice === 'rock') {
+        if (this.computerChoice === 'paper') {
+          return this.winner = 'computer';
+        } else if (this.computerChoice === 'scissors') {
+          return this.winner = 'human';
+        }
+      } else if (this.humanChoice === 'paper') {
+        if (this.computerChoice === 'rock') {
+          return this.winner = 'human';
+        } else if (this.computerChoice === 'scissors') {
+          return this.winner = 'computer';
+        }
+      } else if (this.humanChoice === 'scissors') {
+        if (this.computerChoice === 'paper') {
+          return this.winner = 'human';
+        } else if (this.computerChoice === 'rock') {
+          return this.winner = 'computer';
+        }
+      }
+    // } else if (this.gameType === 'difficult') {
+    //   if (this.humanChoice === 'lizard')
     }
   }
+
   checkForTie() {
     if (this.humanChoice === this.computerChoice) {
       return true;

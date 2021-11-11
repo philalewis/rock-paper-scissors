@@ -22,12 +22,10 @@ class Player {
     var choices = ['rock', 'paper', 'scissors', 'lizard', 'alien', 'predator', 'choice4', 'choice5'];
     if (this.name = 'human') {
       return targetId;
-    }
-    if (gameType === 'classic') {
+    } else if (gameType === 'classic') {
       var randomClassicChoice = Math.floor(Math.random() * 3);
       return choices[randomClassicChoice];
-    }
-    if (gameType === 'difficult') {
+    } else if (gameType === 'difficult') {
       var randomDifficultChoice = Math.floor(Math.random() * 5 + 3);
       return choices[randomDifficultChoice];
     }
