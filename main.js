@@ -5,6 +5,7 @@ var difficultGame = document.querySelector('#difficult');
 var gameChoiceContainer = document.querySelector('.game-choice-container');
 var classicButtons = document.querySelector('.classic-buttons');
 var difficultButtons = document.querySelector('.difficult-buttons');
+var gameButtons = document.querySelector('.game-buttons');
 var rock = document.querySelector('#rock');
 var paper = document.querySelector('#paper');
 var scissors = document.querySelector('#scissors');
@@ -15,6 +16,8 @@ var choice4 = document.querySelector('#choice4');
 var choice5 = document.querySelector('#choice5');
 var classicButtons = document.querySelector('.classic-buttons');
 var difficultButtons = document.querySelector('.difficult-buttons');
+var gameResults = document.querySelector('.game-results');
+var changeGameButton = document.querySelector('#changeGame');
 var currentGame;
 var parsedHumanData;
 var parsedComputerData;
@@ -39,6 +42,7 @@ window.onload = function() {
 classicGame.addEventListener('click', makeNewClassicGame);
 difficultGame.addEventListener('click', makeNewDifficultGame);
 classicButtons.addEventListener('click', playClassicGame);
+changeGameButton.addEventListener('click', changeGame)
 
 function hide(element) {
   element.classList.add('hidden');
@@ -76,6 +80,7 @@ function playClassicGame(event) {
   currentGame.human.saveWinsToStorage();
   currentGame.computer.saveWinsToStorage();
   updateCurrentInfo();
+  diplayWinnerInfo();
 }
 
 function playDifficultGame(event) {
@@ -87,13 +92,24 @@ function playDifficultGame(event) {
   currentGame.human.saveWinsToStorage();
   currentGame.computer.saveWinsToStorage();
   updateCurrentInfo();
+  diplayWinnerInfo();
 }
 
 function diplayWinnerInfo() {
-  
+  hide(gameButtons);
+  show(gameResults);
+  setTimeout(function() {
+    hide(gameResults);
+    show(gameButtons);
+  },2000)
+  show(changeGameButton);
 }
 
-
+function changeGame() {
+  hide(gameButtons);
+  hide(changeGameButton);
+  show(gameChoiceContainer);
+}
 
 
 
