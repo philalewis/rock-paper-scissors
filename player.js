@@ -3,6 +3,7 @@ class Player {
     this.name = player.name;
     this.token = player.token;
     this.wins = player.wins || 0;
+    this.choice = '';
   }
   saveWinsToStorgae() {
     var playerData = {
@@ -11,32 +12,21 @@ class Player {
       wins: this.wins,
     }
     var stringifiedPlayerData = JSON.stringify(playerData);
-    localStorage.setItem('storedPlayerData', stringifiedPlayerData);
+    localStorage.setItem(playerData.name, stringifiedPlayerData);
   }
   retrieveWinsFromStorage() {
-    var retrievedPlayerData = localStorage.getItem('storedPlayerData');
+    var retrievedPlayerData = localStorage.getItem(playerData.name);
     var parsedPlayerData = JSON.parse(retrievedPlayerData);
     return parsedPlayerData;
   }
   takeTurn(gameType, targetId) {
-    var choices = {
-      0: 'rock',
-      1: 'paper',
-      2: 'scissors',
-      3: 'lizard',
-      4: 'alien',
-      5: 'predator',
-      6: 'choice4',
-      7: 'choice5'
-    }
+    var choices = ['rock', 'paper', 'scissors', 'lizard', 'alien', 'predator', 'choice4', 'choice5'];
     if (this.name = 'human') {
       return targetId;
-    }
-    if (gameType === 'classic') {
+    } else if (gameType === 'classic') {
       var randomClassicChoice = Math.floor(Math.random() * 3);
       return choices[randomClassicChoice];
-    }
-    if (gameType === 'difficult') {
+    } else if (gameType === 'difficult') {
       var randomDifficultChoice = Math.floor(Math.random() * 5 + 3);
       return choices[randomDifficultChoice];
     }
