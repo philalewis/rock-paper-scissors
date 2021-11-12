@@ -6,14 +6,14 @@ var gameChoiceContainer = document.querySelector('.game-choice-container');
 var classicButtons = document.querySelector('.classic-buttons');
 var difficultButtons = document.querySelector('.difficult-buttons');
 var gameButtons = document.querySelector('.game-buttons');
-var rock = document.querySelector('#rock');
-var paper = document.querySelector('#paper');
-var scissors = document.querySelector('#scissors');
-var lizard = document.querySelector('#lizard');
-var alien = document.querySelector('#alien');
-var predator = document.querySelector('#predator');
-var choice4 = document.querySelector('#choice4');
-var choice5 = document.querySelector('#choice5');
+// var rock = document.querySelector('#rock');
+// var paper = document.querySelector('#paper');
+// var scissors = document.querySelector('#scissors');
+// var lizard = document.querySelector('#lizard');
+// var alien = document.querySelector('#alien');
+// var predator = document.querySelector('#predator');
+// var choice4 = document.querySelector('#choice4');
+// var choice5 = document.querySelector('#choice5');
 var classicButtons = document.querySelector('.classic-buttons');
 var difficultButtons = document.querySelector('.difficult-buttons');
 var gameResults = document.querySelector('.game-results');
@@ -78,7 +78,7 @@ function updateCurrentInfo() {
 }
 
 function playClassicGame(event) {
-  currentGame.humanChoice = currentGame.human.takeTurn('classic', event.target.id)
+  currentGame.humanChoice = currentGame.human.takeTurn('classic', event.target.parentNode.id)
   currentGame.computerChoice = currentGame.computer.takeTurn('classic')
   if (!currentGame.checkForTie()) {
     currentGame.checkForWin();
@@ -90,7 +90,7 @@ function playClassicGame(event) {
 }
 
 function playDifficultGame(event) {
-  currentGame.humanChoice = currentGame.human.takeTurn('difficult', event.target.id)
+  currentGame.humanChoice = currentGame.human.takeTurn('difficult', event.target.parentNode.id)
   currentGame.computerChoice = currentGame.computer.takeTurn('difficult')
   if (!currentGame.checkForTie()) {
     currentGame.checkForWin();

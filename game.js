@@ -8,6 +8,7 @@ class Game {
     this.winner;
   }
   checkForWin() {
+    console.log('Human choice: ', this.humanChoice, 'Computer choice: ', this.computerChoice)
     if (this.gameType === 'classic') {
       if (this.humanChoice === 'rock' && 
         this.computerChoice === 'scissors') {
