@@ -8,41 +8,52 @@ class Game {
     this.winner;
   }
   checkForWin() {
+    console.log('Human choice: ', this.humanChoice, 'Computer choice: ', this.computerChoice)
     if (this.gameType === 'classic') {
-      if (this.humanChoice === 'rock' && 
-        this.computerChoice === 'scissors') {
+      if (this.humanChoice === 'socrates' && 
+        this.computerChoice === 'aristotle') {
+          this.winner = 'human'
         return this.human.wins++;
-      } else if (this.humanChoice === 'paper' &&
-        this.computerChoice === 'rock') {
+      } else if (this.humanChoice === 'plato' &&
+        this.computerChoice === 'socrates') {
+          this.winner = 'human'
         return this.human.wins++;
-      } else if (this.humanChoice === 'scissors' &&
-        this.computerChoice === 'paper') {
+      } else if (this.humanChoice === 'aristotle' &&
+        this.computerChoice === 'plato') {
+          this.winner = 'human'
         return this.human.wins++;
       } else {
+        this.winner = 'computer'
         return this.computer.wins++;
-      } 
+      }
     } else if (this.gameType === 'difficult') {
-      if (this.humanChoice === 'lizard' &&
-      (this.computerChoice === 'alien' || 
-      this.computerChoice === 'predator')) {
+      if (this.humanChoice === 'dostoevsky' &&
+      (this.computerChoice === 'sartre' || 
+      this.computerChoice === 'kierkegaard')) {
+        this.winner = 'human'
         return this.human.wins++;
-      } else if (this.humanChoice === 'alien' &&
-      (this.computerChoice === 'predator' || 
-      this.computerChoice === 'choice4')) {
+      } else if (this.humanChoice === 'sartre' &&
+      (this.computerChoice === 'kierkegaard' || 
+      this.computerChoice === 'nietzsche')) {
+        this.winner = 'human'
         return this.human.wins++;
-      } else if (this.humanChoice === 'predator' &&
-      (this.computerChoice === 'choice4' || 
-      this.computerChoice === 'choice5')) {
+      } else if (this.humanChoice === 'kierkegaard' &&
+      (this.computerChoice === 'nietzsche' || 
+      this.computerChoice === 'camus')) {
+        this.winner = 'human'
         return this.human.wins++;
-      } else if (this.humanChoice === 'choice4' &&
-      (this.computerChoice === 'choice5' ||
-      this.computerChoice === 'lizard')) {
+      } else if (this.humanChoice === 'nietzsche' &&
+      (this.computerChoice === 'camus' ||
+      this.computerChoice === 'dostoevsky')) {
+        this.winner = 'human'
         return this.human.wins++;
-      } else if (this.humanChoice === 'choice5' && 
-      (this.computerChoice === 'lizard' ||
-      this.computerChoice === 'alien')) {
+      } else if (this.humanChoice === 'camus' && 
+      (this.computerChoice === 'dostoevsky' ||
+      this.computerChoice === 'sartre')) {
+        this.winner = 'human'
         return this.human.wins++;
       } else {
+        this.winner = 'computer'
         return this.computer.wins++;
       }
     }
@@ -54,13 +65,8 @@ class Game {
     return false;
   }
   gameReset() {
-    // this.humanChoice = '';
-    // this.computerChoice = '';
-    // this.winner = '';
-
-    // Timout function here. Data stored and displayed before this. Should return to game screen
-    // setTimeout(function() {
-
-    // }, 2000)
+    this.humanChoice = '';
+    this.computerChoice = '';
+    this.winner = '';
   }
 }

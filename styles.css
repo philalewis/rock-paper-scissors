@@ -114,6 +114,11 @@ h3 {
   border: 3px solid steelblue;
 }
 
+.choice-image {
+  width: 20%;
+  height: auto;
+}
+
 h4 {
   font-size: 3vh;
   margin: 1vh;

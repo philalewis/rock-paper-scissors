@@ -11,43 +11,52 @@
       <button class="change-game hidden" id="changeGame">Change Game</button>
     </section>
     <section class="main-container">
-      <h1>Rock, Paper, Scissors</h1>
+      <h1>Philosophy Game!</h1>
       <h3 class="prompt">Choose your game!</h3>
       <section class="game-choice-container">
         <button class="game-choice-button" id="classic">
           <h4>CLASSIC</h4>
-          <p>rock > scissors<br>
-            paper > rock<br>
-            scissors > paper
+          <p>socrates > aristotle<br>
+            plato > socrates<br>
+            aristotle > plato
           </p>
         </button>
         <button class="game-choice-button" id="difficult">
           <h4>DIFFICULT</h4>
-          <p>lizard > alien & predator<br>
-            alien > predator & choice4<br>
-            predator > choice4 & choice5<br>
-            choice4 > choice5 & lizard<br>
-            choice5 > lizard & alien
+          <p>dostoevsky > sartre & kierkegaard<br>
+            sartre > kierkegaard & nietzsche<br>
+            kierkegaard > nietzsche & camus<br>
+            nietzsche > camus & dostoevsky<br>
+            camus > dostoevsky & sartre
           </p>
         </button>
       </section>
       <section class="game-buttons">
         <section class="classic-buttons hidden">
-          <button class="choice" id="rock">rock</button>
-          <button class="choice" id="paper">paper</button>
-          <button class="choice" id="scissors">scissors</button>
+          <button class="choice" id="socrates"><img src="./assets/Socrates.jpeg" class="choice-image" id="socrates-image" alt="Socrates"></button>
+          <button class="choice" id="plato"><img src="./assets/Plato.jpeg" class="choice-image" id="plato-image" alt="Plato"></button>
+          <button class="choice" id="aristotle"><img src="./assets/Aristotle.jpeg" class="choice-image" id="plato-image" alt="Aristotle"></button>
         </section>
         <section class="difficult-buttons hidden">
-          <button class="choice" id="lizard">lizard</button>
-          <button class="choice" id="alien">alien</button>
-          <button class="choice" id="predator">predator</button>
-          <button class="choice" id="choice4">choice4</button>
-          <button class="choice" id="choice5">choice5</button>
+          <button class="choice" id="dostoevsky"><img src="./assets/Dostoevsky.jpg" class="choice-image" id="dostoevsky-image" alt="Dostoevsky"></button>
+          <button class="choice" id="sartre"><img src="./assets/Sartre.jpeg" class="choice-image" id="sartre-image" alt="Sartre"></button>
+          <button class="choice" id="kierkegaard"><img src="./assets/Kierkegaard.jpeg" class="choice-image" id="kierkegaard-image" alt="Kierkegaard"></button>
+          <button class="choice" id="nietzsche"><img src="./assets/Nietzsche.jpeg" class="choice-image" id="nietzsche-image" alt="Nietzsche"></button>
+          <button class="choice" id="camus"><img src="./assets/Camus.jpeg" class="choice-image" id="camus-image" alt="Camus"></button>
         </section>
       </section>
       <section class="game-results hidden">
-        <img src="" alt="human choice">
-        <img src="" alt="computer choice">
+        <img src="" class="human-choice-image" alt="human choice">
+        <img src="" class="computer-choice-image" alt="computer choice">
+        <p class="display-winner"></p>
+        <p class="socrates-quote hidden">The only true wisdom is in knowing that you know nothing.</p>
+        <p class="plato-quote hidden">Be kind, for everyone you meet is fighting a harder battle.</p>
+        <p class="aristotle-quote hidden">Quality is not an act, it is a habbit.</p>
+        <p class="dostoevsky-quote hidden">To go wrong in one's own way is better than to go right in someone else's.</p>
+        <p class="sartre-quote hidden">Freedom is what we do with what is done to us.</p>
+        <p class="nietzsche-quote hidden">And those who were seen dancing were thought to be insane by those who could not hear the music.</p>
+        <p class="kierkegaard-quote hidden">Life can only be understood backwards; but it must be lived forwards.</p>
+        <p class="camus-quote hidden">You will never be happy if you continue to search for what happiness consists of. You will never live if you are looking for the meaning of life.</p>
       </section>
     </section>
     <section class="sidebar computer-side">
@@ -56,7 +65,7 @@
       <p class="score-display" id="computerScore">Score: 0</p>
     </section>
   </body>
-  <script type="text/javascript" src="game.js"></script>
   <script type="text/javascript" src="player.js"></script>
+  <script type="text/javascript" src="game.js"></script>
   <script type="text/javascript" src="main.js"></script>
 </html>

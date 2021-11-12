@@ -6,17 +6,10 @@ var gameChoiceContainer = document.querySelector('.game-choice-container');
 var classicButtons = document.querySelector('.classic-buttons');
 var difficultButtons = document.querySelector('.difficult-buttons');
 var gameButtons = document.querySelector('.game-buttons');
-var rock = document.querySelector('#rock');
-var paper = document.querySelector('#paper');
-var scissors = document.querySelector('#scissors');
-var lizard = document.querySelector('#lizard');
-var alien = document.querySelector('#alien');
-var predator = document.querySelector('#predator');
-var choice4 = document.querySelector('#choice4');
-var choice5 = document.querySelector('#choice5');
 var classicButtons = document.querySelector('.classic-buttons');
 var difficultButtons = document.querySelector('.difficult-buttons');
 var gameResults = document.querySelector('.game-results');
+var displayWinner = document.querySelector('.display-winner');
 var changeGameButton = document.querySelector('#changeGame');
 var currentGame;
 var parsedHumanData;
@@ -42,6 +35,7 @@ window.onload = function() {
 classicGame.addEventListener('click', makeNewClassicGame);
 difficultGame.addEventListener('click', makeNewDifficultGame);
 classicButtons.addEventListener('click', playClassicGame);
+difficultButtons.addEventListener('click', playDifficultGame);
 changeGameButton.addEventListener('click', changeGame)
 
 function hide(element) {
@@ -55,12 +49,16 @@ function show(element) {
 function makeNewClassicGame() {
   currentGame = new Game(parsedHumanData, parsedComputerData, 'classic');
   hide(gameChoiceContainer);
+  show(gameButtons);
+  hide(difficultButtons);
   show(classicButtons);
 }
 
 function makeNewDifficultGame() {
   currentGame = new Game(parsedHumanData, parsedComputerData, 'difficult');
   hide(gameChoiceContainer);
+  show(gameButtons);
+  hide(classicButtons);
   show(difficultButtons);
 }
 
@@ -72,9 +70,11 @@ function updateCurrentInfo() {
 }
 
 function playClassicGame(event) {
-  currentGame.humanChoice = currentGame.human.takeTurn('classic', event.target.id)
+  currentGame.humanChoice = currentGame.human.takeTurn('classic', event.target.parentNode.id)
   currentGame.computerChoice = currentGame.computer.takeTurn('classic')
-  if (!currentGame.checkForTie()) {
+  if (currentGame.checkForTie()) {
+    currentGame.winner = `nobody`;
+  } else {
     currentGame.checkForWin();
   }
   currentGame.human.saveWinsToStorage();
@@ -84,7 +84,7 @@ function playClassicGame(event) {
 }
 
 function playDifficultGame(event) {
-  currentGame.humanChoice = currentGame.human.takeTurn('difficult', event.target.id)
+  currentGame.humanChoice = currentGame.human.takeTurn('difficult', event.target.parentNode.id)
   currentGame.computerChoice = currentGame.computer.takeTurn('difficult')
   if (!currentGame.checkForTie()) {
     currentGame.checkForWin();
@@ -97,6 +97,8 @@ function playDifficultGame(event) {
 
 function diplayWinnerInfo() {
   hide(gameButtons);
+  var winner = `${currentGame.winner} wins!`
+  displayWinner.innerText = winner.toUpperCase();
   show(gameResults);
   setTimeout(function() {
     hide(gameResults);
