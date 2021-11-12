@@ -20,7 +20,7 @@ class Player {
     return parsedPlayerData.wins;
   }
   takeTurn(gameType, targetId) {
-    var choices = ['rock', 'paper', 'scissors', 'lizard', 'alien', 'predator', 'choice4', 'choice5'];
+    var choices = ['socrates', 'plato', 'aristotle', 'dostoevsky', 'sartre', 'kierkegaard', 'nietzsche', 'camus'];
     if (this.name === 'human') {
       return this.choice = targetId;
     } else if (gameType === 'classic') {
