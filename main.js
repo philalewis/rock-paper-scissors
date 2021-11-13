@@ -72,7 +72,6 @@ function updateCurrentInfo() {
 }
 
 function playGame(event) {
-  console.log('here')
   currentGame.humanChoice = currentGame.human.takeTurn(currentGame.gameType, event.target.parentNode.id)
   currentGame.computerChoice = currentGame.computer.takeTurn(currentGame.gameType)
   if (currentGame.checkForTie()) {
