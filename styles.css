@@ -68,10 +68,17 @@ body {
   align-items: center;
 }
 
-.sidebar>img {
-  width: 7vw;
-  height: 12vh;
+.icon {
+  width: 40%;
+  height: auto;
   margin: 4vh;
+}
+
+.greek-column {
+  width: 5%;
+  height: auto;
+  position: fixed;
+  bottom: 2%;
 }
 
 .score-display,
@@ -98,10 +105,24 @@ h3 {
   text-align: center;
 }
 
-.game-container {
+.prompt {
+  margin-bottom: 5vh;
+}
+
+.game-choice-container {
+  width: 100%;
   display: flex;
   flex-direction: column;
-  margin: 10vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.classic-buttons,
+.difficult-buttons {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
 }
 
 .game-choice-button {
@@ -112,29 +133,43 @@ h3 {
   background-color: inherit;
   border-radius: 12px;
   border: 3px solid steelblue;
+  width: 50%;
+}
+
+.game-choice-button:hover {
+  background-color: #C8C8C7;
 }
 
 .choice-image {
   width: 100%;
   height: auto;
+  padding: 0;
+  margin: 0;
 }
 
 .choice {
-  width: 30%;
+  width: 25%;
   height: auto;
-  border: none;
   background-color: inherit;
   display: flex;
   flex-direction: row;
+  border: 3px solid steelblue;
+  border-radius: 0;
+  margin: 1%;
+  padding: 0;
+}
+
+.choice:hover {
+  border: 6px solid steelblue;
 }
 
 h4 {
-  font-size: 3vh;
+  font-size: 4vh;
   margin: 1vh;
 }
 
 .game-choice-button>p {
-  font-size: 2.5vh;
+  font-size: 3vh;
   padding: 1vh;
 }
 
