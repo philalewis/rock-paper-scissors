@@ -68,16 +68,41 @@ body {
   align-items: center;
 }
 
-.sidebar>img {
-  width: 7vw;
-  height: 12vh;
+.icon {
+  width: 40%;
+  height: auto;
   margin: 4vh;
+}
+
+.greek-column {
+  width: auto;
+  height: 40%;
+  position: fixed;
+  bottom: 2%;
 }
 
 .score-display,
 .sidebar-title {
   font-size: 4vh;
   margin: 1vh;
+}
+
+.change-game {
+  position: fixed;
+  bottom: 55%;
+  font-size: 2vh;
+  padding: .4%;
+  background-color: #C8C8C7;
+  border: 2px solid black;
+  border-radius: 5px;
+}
+
+.change-game:hover {
+  background-color: lightsteelblue;
+}
+
+button:hover {
+  cursor: pointer;
 }
 
 .main-container {
@@ -98,10 +123,24 @@ h3 {
   text-align: center;
 }
 
-.game-container {
+.prompt {
+  margin-bottom: 3vh;
+}
+
+.game-choice-container {
+  width: 100%;
   display: flex;
   flex-direction: column;
-  margin: 10vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.classic-buttons,
+.difficult-buttons {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
 }
 
 .game-choice-button {
@@ -112,21 +151,44 @@ h3 {
   background-color: inherit;
   border-radius: 12px;
   border: 3px solid steelblue;
+  width: 50%;
 }
 
-.choice-image {
-  width: 20%;
-  height: auto;
-}
-
-h4 {
-  font-size: 3vh;
-  margin: 1vh;
+.game-choice-button:hover {
+  background-color: #C8C8C7;
 }
 
 .game-choice-button>p {
-  font-size: 2.5vh;
+  font-size: 3vh;
   padding: 1vh;
+}
+
+.choice-image {
+  width: 100%;
+  height: auto;
+  padding: 0;
+  margin: 0;
+}
+
+.choice {
+  width: 25%;
+  height: auto;
+  background-color: inherit;
+  display: flex;
+  flex-direction: row;
+  border: 3px solid steelblue;
+  border-radius: 0;
+  margin: 1%;
+  padding: 0;
+}
+
+.choice:hover {
+  border: 6px solid steelblue;
+}
+
+h4 {
+  font-size: 4vh;
+  margin: 1vh;
 }
 
 .hidden {
