@@ -75,8 +75,8 @@ body {
 }
 
 .greek-column {
-  width: 5%;
-  height: auto;
+  width: auto;
+  height: 40%;
   position: fixed;
   bottom: 2%;
 }
@@ -85,6 +85,24 @@ body {
 .sidebar-title {
   font-size: 4vh;
   margin: 1vh;
+}
+
+.change-game {
+  position: fixed;
+  bottom: 55%;
+  font-size: 2vh;
+  padding: .4%;
+  background-color: #C8C8C7;
+  border: 2px solid black;
+  border-radius: 5px;
+}
+
+.change-game:hover {
+  background-color: lightsteelblue;
+}
+
+button:hover {
+  cursor: pointer;
 }
 
 .main-container {
@@ -106,7 +124,7 @@ h3 {
 }
 
 .prompt {
-  margin-bottom: 5vh;
+  margin-bottom: 3vh;
 }
 
 .game-choice-container {
@@ -140,6 +158,15 @@ h3 {
   background-color: #C8C8C7;
 }
 
+.game-choice-button>p {
+  font-size: 3vh;
+  padding: 1vh;
+}
+
+.change-game {
+  position: 
+}
+
 .choice-image {
   width: 100%;
   height: auto;
@@ -166,11 +193,6 @@ h3 {
 h4 {
   font-size: 4vh;
   margin: 1vh;
-}
-
-.game-choice-button>p {
-  font-size: 3vh;
-  padding: 1vh;
 }
 
 .hidden {
