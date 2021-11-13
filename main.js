@@ -8,6 +8,7 @@ var difficultButtons = document.querySelector('.difficult-buttons');
 var gameButtons = document.querySelector('.game-buttons');
 var classicButtons = document.querySelector('.classic-buttons');
 var difficultButtons = document.querySelector('.difficult-buttons');
+var choice = document.querySelectorAll('.choice');
 var gameResults = document.querySelector('.game-results');
 var displayWinner = document.querySelector('.display-winner');
 var changeGameButton = document.querySelector('#changeGame');
@@ -34,8 +35,9 @@ window.onload = function() {
 
 classicGame.addEventListener('click', makeNewClassicGame);
 difficultGame.addEventListener('click', makeNewDifficultGame);
-classicButtons.addEventListener('click', playClassicGame);
-difficultButtons.addEventListener('click', playDifficultGame);
+for (var i = 0; i < choice.length; i++) {
+  choice[i].addEventListener('click', playGame);
+}
 changeGameButton.addEventListener('click', changeGame);
 
 function hide(element) {
@@ -69,23 +71,10 @@ function updateCurrentInfo() {
   computerScore.innerText = `Score: ${computerWins}`;
 }
 
-function playClassicGame(event) {
-  currentGame.humanChoice = currentGame.human.takeTurn('classic', event.target.parentNode.id)
-  currentGame.computerChoice = currentGame.computer.takeTurn('classic')
-  if (currentGame.checkForTie()) {
-    currentGame.winner = `nobody`;
-  } else {
-    currentGame.checkForWin();
-  }
-  currentGame.human.saveWinsToStorage();
-  currentGame.computer.saveWinsToStorage();
-  updateCurrentInfo();
-  diplayWinnerInfo();
-}
-
-function playDifficultGame(event) {
-  currentGame.humanChoice = currentGame.human.takeTurn('difficult', event.target.parentNode.id)
-  currentGame.computerChoice = currentGame.computer.takeTurn('difficult')
+function playGame(event) {
+  console.log('here')
+  currentGame.humanChoice = currentGame.human.takeTurn(currentGame.gameType, event.target.parentNode.id)
+  currentGame.computerChoice = currentGame.computer.takeTurn(currentGame.gameType)
   if (currentGame.checkForTie()) {
     currentGame.winner = `nobody`;
   } else {
