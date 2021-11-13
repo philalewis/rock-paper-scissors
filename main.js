@@ -36,7 +36,7 @@ classicGame.addEventListener('click', makeNewClassicGame);
 difficultGame.addEventListener('click', makeNewDifficultGame);
 classicButtons.addEventListener('click', playClassicGame);
 difficultButtons.addEventListener('click', playDifficultGame);
-changeGameButton.addEventListener('click', changeGame)
+changeGameButton.addEventListener('click', changeGame);
 
 function hide(element) {
   element.classList.add('hidden');
@@ -86,7 +86,9 @@ function playClassicGame(event) {
 function playDifficultGame(event) {
   currentGame.humanChoice = currentGame.human.takeTurn('difficult', event.target.parentNode.id)
   currentGame.computerChoice = currentGame.computer.takeTurn('difficult')
-  if (!currentGame.checkForTie()) {
+  if (currentGame.checkForTie()) {
+    currentGame.winner = `nobody`;
+  } else {
     currentGame.checkForWin();
   }
   currentGame.human.saveWinsToStorage();
