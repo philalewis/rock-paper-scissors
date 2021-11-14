@@ -159,8 +159,9 @@ h3 {
 }
 
 .game-choice-button>p {
-  font-size: 3vh;
-  padding: 1vh;
+  font-size: 120%;
+  padding: 5%;
+  width: 85%;
 }
 
 .choice-image {

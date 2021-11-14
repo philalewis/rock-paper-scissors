@@ -6,8 +6,14 @@ class Game {
     this.computerChoice;
     this.gameType = gameType;
     this.winner;
+    this.humanChoiceImage;
+    this.computerChoiceImage;
   }
   checkForWin() {
+    console.log(this.humanChoice);
+    
+    this.humanChoiceImage = `./assets/${this.humanChoice}.jpeg`;
+    this.computerChoiceImage = `./assets/${this.computerChoice}.jpeg`;
     if (this.gameType === 'classic') {
       if (this.humanChoice === 'socrates' && 
         this.computerChoice === 'aristotle') {
@@ -64,19 +70,10 @@ class Game {
     return false;
   }
   gameReset() {
-    // hide(gameButtons);
-    // var winner = `${this.winner} wins!`
-    // displayWinner.innerText = winner.toUpperCase();
-    // show(gameResults);
-    // setTimeout(function() {
-    //   hide(gameResults);
-    //   show(gameButtons);
-    // },2000)
-    // show(changeGameButton);
-
-
     this.humanChoice = '';
     this.computerChoice = '';
     this.winner = '';
+    this.humanChoiceImage = '';
+    this.computerChoiceImage = '';
   }
 }

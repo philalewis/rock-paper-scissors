@@ -12,6 +12,8 @@ var choice = document.querySelectorAll('.choice');
 var gameResults = document.querySelector('.game-results');
 var displayWinner = document.querySelector('.display-winner');
 var changeGameButton = document.querySelector('#changeGame');
+var humanChoiceImage = document.querySelector('.human-choice-image');
+var computerChoiceImage = document.querySelector('.computer-choice-image');
 var currentGame;
 var parsedHumanData;
 var parsedComputerData;
@@ -72,8 +74,10 @@ function updateCurrentInfo() {
 }
 
 function playGame(event) {
+  // console.log(event.target.parentNode.id)
   currentGame.humanChoice = currentGame.human.takeTurn(currentGame.gameType, event.target.parentNode.id)
-  currentGame.computerChoice = currentGame.computer.takeTurn(currentGame.gameType)
+  currentGame.computerChoice = currentGame.computer.takeTurn(currentGame.gameType, event.target.parentNode.id)
+  // console.log(currentGame.humanChoice, currentGame.computerChoice)
   if (currentGame.checkForTie()) {
     currentGame.winner = `nobody`;
   } else {
@@ -85,10 +89,28 @@ function playGame(event) {
   diplayWinnerInfo();
 }
 
+function displayChoices() {
+  humanChoiceImage.src = `"${currentGame.humanChoiceImage}"`;
+  console.log(currentGame.humanChoiceImage)
+  computerChoiceImage.src = `"${currentGame.computerChoiceImage}"`;
+  // show(gameResults);
+  // show(humanChoiceImage);
+  // show(computerChoiceImage);
+}
+
+// function hideChoices() {
+//   hide(humanChoiceImage);
+//   hide(computerChoiceImage);
+//   hide(gameResults);
+// }
+
 function diplayWinnerInfo() {
   hide(gameButtons);
   var winner = `${currentGame.winner} wins!`
   displayWinner.innerText = winner.toUpperCase();
+  displayChoices();
+  show(humanChoiceImage);
+  show(computerChoiceImage);
   show(gameResults);
   changeGameButton.disabled = true;
   setTimeout(function() {
@@ -96,22 +118,17 @@ function diplayWinnerInfo() {
     show(gameButtons);
     changeGameButton.disabled = false;
   },2000)
+  // hideChoices();
   show(changeGameButton);
+  hide(humanChoiceImage);
+  hide(computerChoiceImage);
+  hide(gameResults);
+  currentGame.gameReset();
 }
 
 function changeGame() {
   hide(gameButtons);
   hide(changeGameButton);
   show(gameChoiceContainer);
+  currentGame.gameReset();
 }
-
-
-
-
-
-
-
-// Play a game:
-// 6. setTimeout
-// 7. return to game
-// 8. display change game button

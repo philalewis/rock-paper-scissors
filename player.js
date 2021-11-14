@@ -9,7 +9,7 @@ class Player {
     var playerData = {
       name: this.name,
       token: this.token,
-      wins: this.wins,
+      wins: this.wins
     }
     var stringifiedPlayerData = JSON.stringify(playerData);
     localStorage.setItem(playerData.name, stringifiedPlayerData);
