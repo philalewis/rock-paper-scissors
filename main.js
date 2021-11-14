@@ -77,12 +77,9 @@ function playGame(event) {
   // console.log(event.target.parentNode.id)
   currentGame.humanChoice = currentGame.human.takeTurn(currentGame.gameType, event.target.parentNode.id)
   currentGame.computerChoice = currentGame.computer.takeTurn(currentGame.gameType, event.target.parentNode.id)
-  // console.log(currentGame.humanChoice, currentGame.computerChoice)
-  if (currentGame.checkForTie()) {
-    currentGame.winner = `nobody`;
-  } else {
-    currentGame.checkForWin();
-  }
+  console.log(currentGame.humanChoice, currentGame.computerChoice)
+  currentGame.checkForTie();
+  currentGame.checkForWin();
   currentGame.human.saveWinsToStorage();
   currentGame.computer.saveWinsToStorage();
   updateCurrentInfo();
@@ -90,9 +87,10 @@ function playGame(event) {
 }
 
 function displayChoices() {
-  humanChoiceImage.src = `"${currentGame.humanChoiceImage}"`;
+  humanChoiceImage.src = `${currentGame.humanChoiceImage}`;
+  computerChoiceImage.src = `${currentGame.computerChoiceImage}`;
   console.log(currentGame.humanChoiceImage)
-  computerChoiceImage.src = `"${currentGame.computerChoiceImage}"`;
+  console.log(currentGame.computerChoiceImage)
   // show(gameResults);
   // show(humanChoiceImage);
   // show(computerChoiceImage);
@@ -115,15 +113,15 @@ function diplayWinnerInfo() {
   changeGameButton.disabled = true;
   setTimeout(function() {
     hide(gameResults);
+    hide(humanChoiceImage);
+    hide(computerChoiceImage);
     show(gameButtons);
+    show(changeGameButton);
     changeGameButton.disabled = false;
+    currentGame.gameReset();
   },2000)
   // hideChoices();
-  show(changeGameButton);
-  hide(humanChoiceImage);
-  hide(computerChoiceImage);
-  hide(gameResults);
-  currentGame.gameReset();
+  // hide(gameResults);
 }
 
 function changeGame() {

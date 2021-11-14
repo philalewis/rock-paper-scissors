@@ -8,28 +8,29 @@ class Game {
     this.winner;
     this.humanChoiceImage;
     this.computerChoiceImage;
+    this.isATie;
   }
   checkForWin() {
-    console.log(this.humanChoice);
-    
+    // console.log(`human choice: ${this.humanChoice}`)
+    // console.log(`computer choice: ${this.computerChoice}`);
     this.humanChoiceImage = `./assets/${this.humanChoice}.jpeg`;
     this.computerChoiceImage = `./assets/${this.computerChoice}.jpeg`;
     if (this.gameType === 'classic') {
       if (this.humanChoice === 'socrates' && 
         this.computerChoice === 'aristotle') {
           this.winner = 'human'
-        return this.human.wins++;
+          return this.human.wins++;
       } else if (this.humanChoice === 'plato' &&
         this.computerChoice === 'socrates') {
           this.winner = 'human'
-        return this.human.wins++;
+          return this.human.wins++;
       } else if (this.humanChoice === 'aristotle' &&
         this.computerChoice === 'plato') {
           this.winner = 'human'
-        return this.human.wins++;
+          return this.human.wins++;
       } else {
-        this.winner = 'computer'
-        return this.computer.wins++;
+          this.winner = 'computer'
+          return this.computer.wins++;
       }
     } else if (this.gameType === 'difficult') {
       if (this.humanChoice === 'dostoevsky' &&
@@ -65,9 +66,10 @@ class Game {
   }
   checkForTie() {
     if (this.humanChoice === this.computerChoice) {
-      return true;
+      this.winner = 'nobody';
+      return this.isATie = true;
     }
-    return false;
+    return this.isATie = false;
   }
   gameReset() {
     this.humanChoice = '';
