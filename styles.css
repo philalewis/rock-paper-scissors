@@ -171,6 +171,14 @@ h3 {
   margin: 0;
 }
 
+.computer-choice-image,
+.human-choice-image {
+  width: 25%;
+  height: auto;
+  padding: 5%;
+  
+}
+
 .choice {
   width: 25%;
   height: auto;

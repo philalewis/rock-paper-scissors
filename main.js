@@ -14,6 +14,7 @@ var displayWinner = document.querySelector('.display-winner');
 var changeGameButton = document.querySelector('#changeGame');
 var humanChoiceImage = document.querySelector('.human-choice-image');
 var computerChoiceImage = document.querySelector('.computer-choice-image');
+var winningQuote = document.querySelector('.winning-quote');
 var currentGame;
 var parsedHumanData;
 var parsedComputerData;
@@ -71,6 +72,7 @@ function updateCurrentInfo() {
   var computerWins = currentGame.computer.retrieveWinsFromStorage('computer');
   humanScore.innerText = `Score: ${humanWins}`;
   computerScore.innerText = `Score: ${computerWins}`;
+  winningQuote.innerText = currentGame.winningQuote;
 }
 
 function playGame(event) {
@@ -89,8 +91,8 @@ function playGame(event) {
 function displayChoices() {
   humanChoiceImage.src = `${currentGame.humanChoiceImage}`;
   computerChoiceImage.src = `${currentGame.computerChoiceImage}`;
-  console.log(currentGame.humanChoiceImage)
-  console.log(currentGame.computerChoiceImage)
+  // console.log(currentGame.humanChoiceImage)
+  // console.log(currentGame.computerChoiceImage)
   // show(gameResults);
   // show(humanChoiceImage);
   // show(computerChoiceImage);
