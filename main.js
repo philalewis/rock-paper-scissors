@@ -90,9 +90,11 @@ function diplayWinnerInfo() {
   var winner = `${currentGame.winner} wins!`
   displayWinner.innerText = winner.toUpperCase();
   show(gameResults);
+  changeGameButton.disabled = true;
   setTimeout(function() {
     hide(gameResults);
     show(gameButtons);
+    changeGameButton.disabled = false;
   },2000)
   show(changeGameButton);
 }

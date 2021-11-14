@@ -64,6 +64,17 @@ class Game {
     return false;
   }
   gameReset() {
+    // hide(gameButtons);
+    // var winner = `${this.winner} wins!`
+    // displayWinner.innerText = winner.toUpperCase();
+    // show(gameResults);
+    // setTimeout(function() {
+    //   hide(gameResults);
+    //   show(gameButtons);
+    // },2000)
+    // show(changeGameButton);
+
+
     this.humanChoice = '';
     this.computerChoice = '';
     this.winner = '';
