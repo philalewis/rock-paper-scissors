@@ -52,11 +52,11 @@ html,
 body {
   height: 100%;
   width: 100%;
-  background-color: lightsteelblue;
+  background-color: #D8E2EF;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Georgia, serif;
 }
 
 .sidebar {
@@ -92,7 +92,7 @@ body {
   bottom: 55%;
   font-size: 2vh;
   padding: .4%;
-  background-color: #C8C8C7;
+  background-color: #D8E2EF;
   border: 2px solid black;
   border-radius: 5px;
 }
@@ -153,20 +153,21 @@ h3 {
   flex-direction: column;
   align-items: center;
   margin: 5vh;
-  background-color: inherit;
+  background-color: #C0D0E5;
   border-radius: 12px;
   border: 3px solid steelblue;
   width: 50%;
+  font-family: Georgia, serif;
 }
 
 .game-choice-button:hover {
-  background-color: #C8C8C7;
+  background-color: lightsteelblue;
 }
 
 .game-choice-button>p {
   font-size: 150%;
-  padding: 2%;
   width: 98%;
+  padding: 2%;
 }
 
 h4 {
@@ -234,8 +235,11 @@ h4 {
   padding: 0;
 }
 
-.choice:hover {
+.choice:hover,
+.game-choice-button:hover,
+.change-game:hover {
   transform: scale(1.05);
+  transition-duration: .1s;
 }
 
 .hidden {
