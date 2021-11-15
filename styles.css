@@ -101,15 +101,6 @@ button:hover {
   cursor: pointer;
 }
 
-.change-game:hover {
-  background-color: lightsteelblue;
-}
-
-.change-game:disabled {
-  background-color: #C8C8C7;
-  cursor: default;
-}
-
 .main-container {
   width: 70%;
   display: flex;
@@ -238,8 +229,18 @@ h4 {
 .choice:hover,
 .game-choice-button:hover,
 .change-game:hover {
-  transform: scale(1.05);
-  transition-duration: .1s;
+  transform: scale(1.02);
+  transition-duration: .15s;
+}
+
+.change-game:hover {
+  background-color: lightsteelblue;
+}
+
+.change-game:disabled {
+  background-color: #C8C8C7;
+  cursor: default;
+  transform: none;
 }
 
 .hidden {

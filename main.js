@@ -17,7 +17,6 @@ var currentGame;
 var parsedHumanData;
 var parsedComputerData;
 
-// When page loads, grab the wins from local storage
 window.onload = function() {
   var retrievedHumanData = localStorage.getItem('human');
   var retrievedComputerData = localStorage.getItem('computer');
@@ -35,7 +34,6 @@ window.onload = function() {
   computerScore.innerText = `Score: ${parsedComputerData.wins}`;
 }
 
-// Event Listeners
 for (var i = 0; i < gameChoiceButton.length; i++) {
   gameChoiceButton[i].addEventListener('click', makeNewGame);
 }
@@ -44,7 +42,6 @@ for (var i = 0; i < choice.length; i++) {
 }
 changeGameButton.addEventListener('click', changeGame);
 
-// Helper functions
 function hide(element) {
   element.classList.add('hidden');
 }
@@ -53,7 +50,6 @@ function show(element) {
   element.classList.remove('hidden');
 }
 
-// Event Handlers
 function makeNewGame(event) {
   currentGame = new Game(parsedHumanData, parsedComputerData, event.target.parentNode.id);
   console.log(event.target.parentNode.id)
@@ -91,7 +87,6 @@ function updateCurrentInfo() {
   computerScore.innerText = `Score: ${computerWins}`;
   winningQuote.innerText = currentGame.winningQuote;
   displayWinner.innerText = `${currentGame.winnerDeclaration}`;
-  // prompt.innerText = '';
   if (currentGame.winner === 'human') {
     humanChoiceImage.classList.add('human-winner-styling');
   } else if (currentGame.winner === 'computer') {

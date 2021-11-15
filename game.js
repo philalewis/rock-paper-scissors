@@ -38,72 +38,60 @@ class Game {
       camusTie: `Albert Camus says, "Those who lack the courage will always find a philosophy to justify it."`
     }
   }
-  
+
   checkForWin() {
     this.humanChoiceImage = `./assets/${this.humanChoice}.jpeg`;
     this.computerChoiceImage = `./assets/${this.computerChoice}.jpeg`;
+    if (this.isATie) {
+      this.winningQuote = this.quoteOptions[`${this.humanChoice}Tie`];
+      return this.winnerDeclaration = `It's a tie!`;
+    }
     if (this.gameType === 'classical') {
-      if (this.isATie) {
-        this.winningQuote = this.quoteOptions[`${this.humanChoice}Tie`];
-        return this.winnerDeclaration = `It's a tie!`;
-      } else if (this.humanChoice === 'socrates' && 
+      if (this.humanChoice === 'socrates' && 
         this.computerChoice === 'aristotle') {
           this.winner = 'human';
-          this.human.wins++;
       } else if (this.humanChoice === 'plato' &&
         this.computerChoice === 'socrates') {
           this.winner = 'human';
-          this.human.wins++;
       } else if (this.humanChoice === 'aristotle' &&
         this.computerChoice === 'plato') {
           this.winner = 'human';
-          this.human.wins++;
       } else {
         this.winner = 'computer';
-        this.winnerDeclaration = 'You loose!';
-        this.computer.wins++;
       }
     }
     if (this.gameType === 'existentialism') {
-      if (this.isATie) {
-        this.winningQuote = this.quoteOptions[`${this.humanChoice}Tie`];
-        this.winnerDeclaration = `It's a tie!`;
-      } else if (this.humanChoice === 'dostoevsky' &&
+      if (this.humanChoice === 'dostoevsky' &&
         (this.computerChoice === 'sartre' || 
         this.computerChoice === 'kierkegaard')) {
           this.winner = 'human';
-          this.human.wins++;
       } else if (this.humanChoice === 'sartre' &&
         (this.computerChoice === 'kierkegaard' || 
         this.computerChoice === 'nietzsche')) {
           this.winner = 'human';
-          this.human.wins++;
       } else if (this.humanChoice === 'kierkegaard' &&
         (this.computerChoice === 'nietzsche' || 
         this.computerChoice === 'camus')) {
           this.winner = 'human';
-          this.human.wins++;
       } else if (this.humanChoice === 'nietzsche' &&
         (this.computerChoice === 'camus' ||
         this.computerChoice === 'dostoevsky')) {
           this.winner = 'human';
-          this.human.wins++;
       } else if (this.humanChoice === 'camus' && 
         (this.computerChoice === 'dostoevsky' ||
         this.computerChoice === 'sartre')) {
           this.winner = 'human';
-          this.human.wins++;
       } else {
         this.winner = 'computer';
-        this.winnerDeclaration = 'You loose!';
-        this.computer.wins++;
       }
     }
     if (this.winner === 'human') {
+      this.human.wins++;
       this.winnerDeclaration = `You win!`;
       this.winningQuote = this.quoteOptions[`${this.humanChoice}Good`];
     }
     if (this.winner === 'computer') {
+      this.computer.wins++;
       this.winnerDeclaration = `You loose!`;
       this.winningQuote = this.quoteOptions[`${this.computerChoice}Bad`];
     }
