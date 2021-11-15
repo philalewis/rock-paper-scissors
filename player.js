@@ -5,6 +5,7 @@ class Player {
     this.wins = player.wins || 0;
     this.choice = '';
   }
+
   saveWinsToStorage() {
     var playerData = {
       name: this.name,
@@ -14,11 +15,13 @@ class Player {
     var stringifiedPlayerData = JSON.stringify(playerData);
     localStorage.setItem(playerData.name, stringifiedPlayerData);
   }
+
   retrieveWinsFromStorage(player) {
     var retrievedPlayerData = localStorage.getItem(player);
     var parsedPlayerData = JSON.parse(retrievedPlayerData);
     return parsedPlayerData.wins;
   }
+  
   takeTurn(gameType, targetId) {
     var choices = ['socrates', 'plato', 'aristotle', 'dostoevsky', 'sartre', 'kierkegaard', 'nietzsche', 'camus'];
     if (this.name === 'human') {

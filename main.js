@@ -13,6 +13,7 @@ var changeGameButton = document.querySelector('#changeGame');
 var humanChoiceImage = document.querySelector('.human-choice-image');
 var computerChoiceImage = document.querySelector('.computer-choice-image');
 var winningQuote = document.querySelector('.winning-quote');
+var prompt = document.querySelector('.prompt');
 var currentGame;
 var parsedHumanData;
 var parsedComputerData;
@@ -55,6 +56,7 @@ function show(element) {
 // Event Handlers
 function makeNewClassicalGame() {
   currentGame = new Game(parsedHumanData, parsedComputerData, 'classical');
+  prompt.innerText = 'Choose your philosopher!'
   hide(gameChoiceContainer);
   show(gameButtons);
   hide(existentialismButtons);
@@ -62,8 +64,8 @@ function makeNewClassicalGame() {
 }
 
 function makeNewExistentialismGame() {
-  // console.log(event.target.id)
   currentGame = new Game(parsedHumanData, parsedComputerData, 'existentialism');
+  prompt.innerText = 'Choose your philosopher!'
   hide(gameChoiceContainer);
   show(gameButtons);
   hide(classicalButtons);
@@ -77,6 +79,7 @@ function updateCurrentInfo() {
   computerScore.innerText = `Score: ${computerWins}`;
   winningQuote.innerText = currentGame.winningQuote;
   displayWinner.innerText = `${currentGame.winnerDeclaration}`;
+  prompt.innerText = '';
   if (currentGame.winner === 'human') {
     humanChoiceImage.classList.add('human-winner-styling');
   } else if (currentGame.winner === 'computer') {
@@ -120,6 +123,7 @@ function displayGameView() {
   show(gameButtons);
   show(changeGameButton);
   changeGameButton.disabled = false;
+  prompt.innerText = 'Choose your philosopher!'
   humanChoiceImage.classList.remove('human-winner-styling');
   computerChoiceImage.classList.remove('computer-winner-styling');
   currentGame.gameReset();
@@ -134,5 +138,6 @@ function changeGame() {
   hide(gameButtons);
   hide(changeGameButton);
   show(gameChoiceContainer);
+  prompt.innerText = 'Choose your era!'
   currentGame.gameReset();
 }

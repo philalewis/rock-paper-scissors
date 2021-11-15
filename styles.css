@@ -97,12 +97,17 @@ body {
   border-radius: 5px;
 }
 
+button:hover {
+  cursor: pointer;
+}
+
 .change-game:hover {
   background-color: lightsteelblue;
 }
 
-button:hover {
-  cursor: pointer;
+.change-game:disabled {
+  background-color: #C8C8C7;
+  cursor: default;
 }
 
 .main-container {
@@ -174,6 +179,25 @@ h3 {
 .game-results {
   display: flex;
   flex-direction: column;
+}
+
+.display-winner,
+.winning-quote {
+  text-align: center;
+  margin: 3%;
+}
+
+.display-winner {
+  font-size: 4vh;
+}
+
+.winning-quote {
+  font-size: 2.5vh;
+}
+
+.game-results-images {
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .human-choice-image,
