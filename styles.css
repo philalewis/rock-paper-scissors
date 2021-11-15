@@ -171,13 +171,27 @@ h3 {
   margin: 0;
 }
 
+.game-results {
+  display: flex;
+  flex-direction: column;
+}
+
 .computer-choice-image,
 .human-choice-image {
   width: 25%;
   height: auto;
   padding: 5%;
-  
 }
+
+.computer-choice-image {
+  border: 3px solid black;
+}
+
+.human-choice-image {
+  border: 3px solid black;
+}
+
+
 
 .choice {
   width: 25%;

@@ -76,7 +76,6 @@ function updateCurrentInfo() {
 }
 
 function playGame(event) {
-  // console.log(event.target.parentNode.id)
   currentGame.humanChoice = currentGame.human.takeTurn(currentGame.gameType, event.target.parentNode.id)
   currentGame.computerChoice = currentGame.computer.takeTurn(currentGame.gameType, event.target.parentNode.id)
   console.log(currentGame.humanChoice, currentGame.computerChoice)
@@ -91,23 +90,11 @@ function playGame(event) {
 function displayChoices() {
   humanChoiceImage.src = `${currentGame.humanChoiceImage}`;
   computerChoiceImage.src = `${currentGame.computerChoiceImage}`;
-  // console.log(currentGame.humanChoiceImage)
-  // console.log(currentGame.computerChoiceImage)
-  // show(gameResults);
-  // show(humanChoiceImage);
-  // show(computerChoiceImage);
 }
-
-// function hideChoices() {
-//   hide(humanChoiceImage);
-//   hide(computerChoiceImage);
-//   hide(gameResults);
-// }
 
 function diplayWinnerInfo() {
   hide(gameButtons);
-  var winner = `${currentGame.winner} wins!`
-  displayWinner.innerText = winner.toUpperCase();
+  displayWinner.innerText = `${currentGame.winnerDeclaration}`;
   displayChoices();
   show(humanChoiceImage);
   show(computerChoiceImage);
@@ -122,8 +109,6 @@ function diplayWinnerInfo() {
     changeGameButton.disabled = false;
     currentGame.gameReset();
   },2000)
-  // hideChoices();
-  // hide(gameResults);
 }
 
 function changeGame() {

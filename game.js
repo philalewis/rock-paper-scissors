@@ -5,75 +5,85 @@ class Game {
     this.humanChoice;
     this.computerChoice;
     this.gameType = gameType;
-    this.winner;
-    this.humanChoiceImage;
-    this.computerChoiceImage;
-    this.winningQuote;
-    this.isATie;
+    this.winner = '';
+    this.winnerDeclaration = '';
+    this.humanChoiceImage = '';
+    this.computerChoiceImage = '';
+    this.winningQuote = '';
+    this.isATie = null;
   }
   checkForWin() {
     this.humanChoiceImage = `./assets/${this.humanChoice}.jpeg`;
     this.computerChoiceImage = `./assets/${this.computerChoice}.jpeg`;
-    this.winningQuote = ``
     if (this.gameType === 'classic') {
       if (this.isATie) {
-        return;
+        return this.winnerDeclaration = `It's a tie!`;
       } else if (this.humanChoice === 'socrates' && 
         this.computerChoice === 'aristotle') {
           this.winner = 'human';
-          this.winningQuote = "The only true wisdom is in knowing that you know nothing.";
+          this.winnerDeclaration = `You win!`;
+          this.winningQuote = `"The only true wisdom is in knowing that you know nothing."`;
           return this.human.wins++;
       } else if (this.humanChoice === 'plato' &&
         this.computerChoice === 'socrates') {
-          this.winner = 'human'
-          this.winningQuote = "Be kind, for everyone you meet is fighting a harder battle.";
+          this.winner = 'human';
+          this.winnerDeclaration = `You win!`;
+          this.winningQuote = `"Be kind, for everyone you meet is fighting a harder battle."`;
           return this.human.wins++;
       } else if (this.humanChoice === 'aristotle' &&
         this.computerChoice === 'plato') {
           this.winner = 'human';
-          this.winningQuote = "Quality is not an act, it is a habbit.";
+          this.winnerDeclaration = `You win!`;
+          this.winningQuote = `"Quality is not an act, it is a habbit."`;
           return this.human.wins++;
       } else {
-          this.winner = 'computer';
-          return this.computer.wins++;
+        this.winner = 'computer';
+        this.winnerDeclaration = 'You loose!';
+        return this.computer.wins++;
       }
     } else if (this.gameType === 'difficult') {
-        if (this.isATie) {
-          return;
-        } else if (this.humanChoice === 'dostoevsky' &&
+      if (this.isATie) {
+        return;
+      } else if (this.humanChoice === 'dostoevsky' &&
         (this.computerChoice === 'sartre' || 
         this.computerChoice === 'kierkegaard')) {
           this.winner = 'human';
-          this.winningQuote = "To go wrong in one's own way is better than to go right in someone else's.";
+          this.winnerDeclaration = `You win!`;
+          this.winningQuote = `"To go wrong in one's own way is better than to go right in someone else's."`;
           return this.human.wins++;
-        } else if (this.humanChoice === 'sartre' &&
+      } else if (this.humanChoice === 'sartre' &&
         (this.computerChoice === 'kierkegaard' || 
         this.computerChoice === 'nietzsche')) {
           this.winner = 'human';
-          this.winningQuote = "Freedom is what we do with what is done to us.";
+          this.winnerDeclaration = `You win!`;
+          this.winningQuote = `"Freedom is what we do with what is done to us."`;
           return this.human.wins++;
-        } else if (this.humanChoice === 'kierkegaard' &&
+      } else if (this.humanChoice === 'kierkegaard' &&
         (this.computerChoice === 'nietzsche' || 
         this.computerChoice === 'camus')) {
           this.winner = 'human';
-          this.winningQuote = "Life can only be understood backwards; but it must be lived forwards.";
+          this.winnerDeclaration = `You win!`;
+          this.winningQuote = `"Life can only be understood backwards; but it must be lived forwards."`;
           return this.human.wins++;
-        } else if (this.humanChoice === 'nietzsche' &&
+      } else if (this.humanChoice === 'nietzsche' &&
         (this.computerChoice === 'camus' ||
         this.computerChoice === 'dostoevsky')) {
           this.winner = 'human';
-          this.winningQuote = "And those who were seen dancing were thought to be insane by those who could not hear the music.";
+          this.winnerDeclaration = `You win!`;
+          this.winningQuote = `"You have your way. I have my way. As for the right way, the correct way, and the only way, it does not exist."`;
           return this.human.wins++;
-        } else if (this.humanChoice === 'camus' && 
+      } else if (this.humanChoice === 'camus' && 
         (this.computerChoice === 'dostoevsky' ||
         this.computerChoice === 'sartre')) {
           this.winner = 'human';
-          this.winningQuote = "The only way to deal with an unfree world is to become so absolutely free that your very existence is an act of rebellion.";
+          this.winnerDeclaration = `You win!`;
+          this.winningQuote = `"The only way to deal with an unfree world is to become so absolutely free that your very existence is an act of rebellion."`;
           return this.human.wins++;
-        } else {
-          this.winner = 'computer';
-          return this.computer.wins++;
-        }
+      } else {
+        this.winner = 'computer';
+        this.winnerDeclaration = 'You loose!';
+        return this.computer.wins++;
+      }
     }
   }
   checkForTie() {
