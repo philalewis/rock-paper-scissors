@@ -97,12 +97,17 @@ body {
   border-radius: 5px;
 }
 
+button:hover {
+  cursor: pointer;
+}
+
 .change-game:hover {
   background-color: lightsteelblue;
 }
 
-button:hover {
-  cursor: pointer;
+.change-game:disabled {
+  background-color: #C8C8C7;
+  cursor: default;
 }
 
 .main-container {
@@ -135,8 +140,8 @@ h3 {
   align-items: center;
 }
 
-.classic-buttons,
-.difficult-buttons {
+.classical-buttons,
+.existentialism-buttons {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -159,8 +164,9 @@ h3 {
 }
 
 .game-choice-button>p {
-  font-size: 3vh;
-  padding: 1vh;
+  font-size: 120%;
+  padding: 5%;
+  width: 85%;
 }
 
 .choice-image {
@@ -168,6 +174,46 @@ h3 {
   height: auto;
   padding: 0;
   margin: 0;
+}
+
+.game-results {
+  display: flex;
+  flex-direction: column;
+}
+
+.display-winner,
+.winning-quote {
+  text-align: center;
+  margin: 3%;
+}
+
+.display-winner {
+  font-size: 4vh;
+}
+
+.winning-quote {
+  font-size: 2.5vh;
+}
+
+.game-results-images {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.human-choice-image,
+.computer-choice-image {
+  width: 25%;
+  height: auto;
+  margin: 5%;
+  border: 6px solid black;
+}
+
+.human-winner-styling {
+  border: 6px solid green;
+}
+
+.computer-winner-styling {
+  border: 6px solid red;
 }
 
 .choice {
@@ -183,7 +229,7 @@ h3 {
 }
 
 .choice:hover {
-  border: 6px solid steelblue;
+  transform: scale(1.05);
 }
 
 h4 {

@@ -15,16 +15,18 @@
       <h1>Philosophy Game!</h1>
       <h3 class="prompt">Choose your era!</h3>
       <section class="game-choice-container">
-        <button class="game-choice-button" id="classic">
+        <button class="game-choice-button" id="classical">
           <h4>CLASSICAL</h4>
-          <p>Socrates > Aristotle<br>
+          <p>RULES:<br>
+            Socrates > Aristotle<br>
             Plato > Socrates<br>
             Aristotle > Plato
           </p>
         </button>
-        <button class="game-choice-button" id="difficult">
+        <button class="game-choice-button" id="existentialism">
           <h4>EXISTENTIALISM</h4>
-          <p>Dostoevsky > Sartre & Kierkegaard<br>
+          <p>RULES:<br>
+            Dostoevsky > Sartre & Kierkegaard<br>
             Sartre > Kierkegaard & Nietzsche<br>
             Kierkegaard > Nietzsche & Camus<br>
             Nietzsche > Camus & Dostoevsky<br>
@@ -33,31 +35,26 @@
         </button>
       </section>
       <section class="game-buttons">
-        <section class="classic-buttons hidden">
-          <button class="choice" id="socrates"><img src="./assets/Socrates.jpeg" class="choice-image" id="socrates-image" alt="Socrates"></button>
-          <button class="choice" id="plato"><img src="./assets/Plato.jpeg" class="choice-image" id="plato-image" alt="Plato"></button>
-          <button class="choice" id="aristotle"><img src="./assets/Aristotle.jpeg" class="choice-image" id="plato-image" alt="Aristotle"></button>
+        <section class="classical-buttons hidden">
+          <button class="choice" id="socrates"><img src="./assets/socrates.jpeg" class="choice-image" id="socratesImage" alt="Socrates"></button>
+          <button class="choice" id="plato"><img src="./assets/plato.jpeg" class="choice-image" id="platoImage" alt="Plato"></button>
+          <button class="choice" id="aristotle"><img src="./assets/aristotle.jpeg" class="choice-image" id="aristotleImage" alt="Aristotle"></button>
         </section>
-        <section class="difficult-buttons hidden">
-          <button class="choice" id="dostoevsky"><img src="./assets/Dostoevsky.jpg" class="choice-image" id="dostoevsky-image" alt="Dostoevsky"></button>
-          <button class="choice" id="sartre"><img src="./assets/Sartre.jpeg" class="choice-image" id="sartre-image" alt="Sartre"></button>
-          <button class="choice" id="kierkegaard"><img src="./assets/Kierkegaard.jpeg" class="choice-image" id="kierkegaard-image" alt="Kierkegaard"></button>
-          <button class="choice" id="nietzsche"><img src="./assets/Nietzsche.jpeg" class="choice-image" id="nietzsche-image" alt="Nietzsche"></button>
-          <button class="choice" id="camus"><img src="./assets/Camus.jpeg" class="choice-image" id="camus-image" alt="Camus"></button>
+        <section class="existentialism-buttons hidden">
+          <button class="choice" id="dostoevsky"><img src="./assets/dostoevsky.jpeg" class="choice-image" id="dostoevskyImage" alt="Dostoevsky"></button>
+          <button class="choice" id="sartre"><img src="./assets/sartre.jpeg" class="choice-image" id="sartreImage" alt="Sartre"></button>
+          <button class="choice" id="kierkegaard"><img src="./assets/kierkegaard.jpeg" class="choice-image" id="kierkegaardImage" alt="Kierkegaard"></button>
+          <button class="choice" id="nietzsche"><img src="./assets/nietzsche.jpeg" class="choice-image" id="nietzscheImage" alt="Nietzsche"></button>
+          <button class="choice" id="camus"><img src="./assets/camus.jpeg" class="choice-image" id="camusImage" alt="Camus"></button>
         </section>
       </section>
       <section class="game-results hidden">
-        <img src="" class="human-choice-image" alt="human choice">
-        <img src="" class="computer-choice-image" alt="computer choice">
+        <section class="game-results-images">
+          <img src="" class="human-choice-image" alt="human choice">
+          <img src="" class="computer-choice-image" alt="computer choice">
+        </section>
         <p class="display-winner"></p>
-        <p class="socrates-quote hidden">The only true wisdom is in knowing that you know nothing.</p>
-        <p class="plato-quote hidden">Be kind, for everyone you meet is fighting a harder battle.</p>
-        <p class="aristotle-quote hidden">Quality is not an act, it is a habbit.</p>
-        <p class="dostoevsky-quote hidden">To go wrong in one's own way is better than to go right in someone else's.</p>
-        <p class="sartre-quote hidden">Freedom is what we do with what is done to us.</p>
-        <p class="nietzsche-quote hidden">And those who were seen dancing were thought to be insane by those who could not hear the music.</p>
-        <p class="kierkegaard-quote hidden">Life can only be understood backwards; but it must be lived forwards.</p>
-        <p class="camus-quote hidden">The only way to deal with an unfree world is to become so absolutely free that your very existence is an act of rebellion.</p>
+        <p class="winning-quote"></p>
       </section>
     </section>
     <section class="sidebar computer-side">

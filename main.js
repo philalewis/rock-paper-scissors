@@ -1,21 +1,24 @@
 var humanScore = document.querySelector('#humanScore');
 var computerScore = document.querySelector('#computerScore');
-var classicGame = document.querySelector('#classic');
-var difficultGame = document.querySelector('#difficult');
+var classicalGame = document.querySelector('#classical');
+var existentialismGame = document.querySelector('#existentialism');
 var gameChoiceContainer = document.querySelector('.game-choice-container');
-var classicButtons = document.querySelector('.classic-buttons');
-var difficultButtons = document.querySelector('.difficult-buttons');
+var classicalButtons = document.querySelector('.classical-buttons');
+var existentialismButtons = document.querySelector('.existentialism-buttons');
 var gameButtons = document.querySelector('.game-buttons');
-var classicButtons = document.querySelector('.classic-buttons');
-var difficultButtons = document.querySelector('.difficult-buttons');
 var choice = document.querySelectorAll('.choice');
 var gameResults = document.querySelector('.game-results');
 var displayWinner = document.querySelector('.display-winner');
 var changeGameButton = document.querySelector('#changeGame');
+var humanChoiceImage = document.querySelector('.human-choice-image');
+var computerChoiceImage = document.querySelector('.computer-choice-image');
+var winningQuote = document.querySelector('.winning-quote');
+var prompt = document.querySelector('.prompt');
 var currentGame;
 var parsedHumanData;
 var parsedComputerData;
 
+// When page loads, grab the wins from local storage
 window.onload = function() {
   var retrievedHumanData = localStorage.getItem('human');
   var retrievedComputerData = localStorage.getItem('computer');
@@ -33,13 +36,15 @@ window.onload = function() {
   computerScore.innerText = `Score: ${parsedComputerData.wins}`;
 }
 
-classicGame.addEventListener('click', makeNewClassicGame);
-difficultGame.addEventListener('click', makeNewDifficultGame);
+// Event Listeners
+classicalGame.addEventListener('click', makeNewClassicalGame);
+existentialismGame.addEventListener('click', makeNewExistentialismGame);
 for (var i = 0; i < choice.length; i++) {
   choice[i].addEventListener('click', playGame);
 }
 changeGameButton.addEventListener('click', changeGame);
 
+// Helper functions
 function hide(element) {
   element.classList.add('hidden');
 }
@@ -48,20 +53,23 @@ function show(element) {
   element.classList.remove('hidden');
 }
 
-function makeNewClassicGame() {
-  currentGame = new Game(parsedHumanData, parsedComputerData, 'classic');
+// Event Handlers
+function makeNewClassicalGame() {
+  currentGame = new Game(parsedHumanData, parsedComputerData, 'classical');
+  prompt.innerText = 'Choose your philosopher!'
   hide(gameChoiceContainer);
   show(gameButtons);
-  hide(difficultButtons);
-  show(classicButtons);
+  hide(existentialismButtons);
+  show(classicalButtons);
 }
 
-function makeNewDifficultGame() {
-  currentGame = new Game(parsedHumanData, parsedComputerData, 'difficult');
+function makeNewExistentialismGame() {
+  currentGame = new Game(parsedHumanData, parsedComputerData, 'existentialism');
+  prompt.innerText = 'Choose your philosopher!'
   hide(gameChoiceContainer);
   show(gameButtons);
-  hide(classicButtons);
-  show(difficultButtons);
+  hide(classicalButtons);
+  show(existentialismButtons);
 }
 
 function updateCurrentInfo() {
@@ -69,16 +77,21 @@ function updateCurrentInfo() {
   var computerWins = currentGame.computer.retrieveWinsFromStorage('computer');
   humanScore.innerText = `Score: ${humanWins}`;
   computerScore.innerText = `Score: ${computerWins}`;
+  winningQuote.innerText = currentGame.winningQuote;
+  displayWinner.innerText = `${currentGame.winnerDeclaration}`;
+  prompt.innerText = '';
+  if (currentGame.winner === 'human') {
+    humanChoiceImage.classList.add('human-winner-styling');
+  } else if (currentGame.winner === 'computer') {
+    computerChoiceImage.classList.add('computer-winner-styling');
+  }
 }
 
 function playGame(event) {
-  currentGame.humanChoice = currentGame.human.takeTurn(currentGame.gameType, event.target.parentNode.id)
-  currentGame.computerChoice = currentGame.computer.takeTurn(currentGame.gameType)
-  if (currentGame.checkForTie()) {
-    currentGame.winner = `nobody`;
-  } else {
-    currentGame.checkForWin();
-  }
+  currentGame.humanChoice = currentGame.human.takeTurn(currentGame.gameType, event.target.parentNode.id);
+  currentGame.computerChoice = currentGame.computer.takeTurn(currentGame.gameType, event.target.parentNode.id);
+  currentGame.checkForTie();
+  currentGame.checkForWin();
   currentGame.human.saveWinsToStorage();
   currentGame.computer.saveWinsToStorage();
   updateCurrentInfo();
@@ -86,30 +99,45 @@ function playGame(event) {
 }
 
 function diplayWinnerInfo() {
-  hide(gameButtons);
-  var winner = `${currentGame.winner} wins!`
-  displayWinner.innerText = winner.toUpperCase();
-  show(gameResults);
+  displayResultsView();
   setTimeout(function() {
-    hide(gameResults);
-    show(gameButtons);
-  },2000)
+    displayGameView();
+  }, 4000);
+}
+
+function displayResultsView() {
+  hide(gameButtons);
+  changeDisplaySource();
+  console.log(humanChoiceImage)
+  console.log(computerChoiceImage)
+  show(humanChoiceImage);
+  show(computerChoiceImage);
+  show(gameResults);
+  changeGameButton.disabled = true;
+}
+
+function displayGameView() {
+  hide(gameResults);
+  hide(humanChoiceImage);
+  hide(computerChoiceImage);
+  show(gameButtons);
   show(changeGameButton);
+  changeGameButton.disabled = false;
+  prompt.innerText = 'Choose your philosopher!'
+  humanChoiceImage.classList.remove('human-winner-styling');
+  computerChoiceImage.classList.remove('computer-winner-styling');
+  currentGame.gameReset();
+}
+
+function changeDisplaySource() {
+  humanChoiceImage.src = currentGame.humanChoiceImage;
+  computerChoiceImage.src = currentGame.computerChoiceImage;
 }
 
 function changeGame() {
   hide(gameButtons);
   hide(changeGameButton);
   show(gameChoiceContainer);
+  prompt.innerText = 'Choose your era!'
+  currentGame.gameReset();
 }
-
-
-
-
-
-
-
-// Play a game:
-// 6. setTimeout
-// 7. return to game
-// 8. display change game button
