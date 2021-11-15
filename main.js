@@ -95,7 +95,6 @@ function changeDisplaySource() {
 function diplayWinnerInfo() {
   hide(gameButtons);
   displayWinner.innerText = `${currentGame.winnerDeclaration}`;
-
   changeDisplaySource();
   show(humanChoiceImage);
   show(computerChoiceImage);
@@ -109,7 +108,7 @@ function diplayWinnerInfo() {
     show(changeGameButton);
     changeGameButton.disabled = false;
     currentGame.gameReset();
-  },2000)
+  },4000)
 }
 
 function changeGame() {
