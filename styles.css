@@ -182,7 +182,7 @@ h4 {
 .display-winner,
 .winning-quote {
   text-align: center;
-  margin: 3%;
+  margin: 2%;
 }
 
 .display-winner {
@@ -195,7 +195,7 @@ h4 {
 
 .game-results-images {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
 }
 
 .human-choice-image,
@@ -212,6 +212,19 @@ h4 {
 
 .computer-winner-styling {
   border: 6px solid red;
+}
+
+.winner-token {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.human-icon,
+.computer-icon {
+  width: 4%;
+  height: auto;
 }
 
 .choice {
@@ -245,4 +258,8 @@ h4 {
 
 .hidden {
   display: none;
+}
+
+.invisible {
+  visibility: hidden;
 }

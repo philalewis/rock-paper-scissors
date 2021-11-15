@@ -13,9 +13,11 @@ var humanChoiceImage = document.querySelector('.human-choice-image');
 var computerChoiceImage = document.querySelector('.computer-choice-image');
 var winningQuote = document.querySelector('.winning-quote');
 var prompt = document.querySelector('.prompt');
-var currentGame;
+var humanIcon = document.querySelector('.human-icon');
+var computerIcon = document.querySelector('.computer-icon');
 var parsedHumanData;
 var parsedComputerData;
+var currentGame;
 
 window.onload = function() {
   var retrievedHumanData = localStorage.getItem('human');
@@ -37,6 +39,7 @@ window.onload = function() {
 for (var i = 0; i < gameChoiceButton.length; i++) {
   gameChoiceButton[i].addEventListener('click', makeNewGame);
 }
+
 for (var i = 0; i < choice.length; i++) {
   choice[i].addEventListener('click', playGame);
 }
@@ -50,9 +53,16 @@ function show(element) {
   element.classList.remove('hidden');
 }
 
+function makeInvisible(element) {
+  element.classList.add('invisible');
+}
+
+function makeVisible(element) {
+  element.classList.remove('invisible');
+}
+
 function makeNewGame(event) {
   currentGame = new Game(parsedHumanData, parsedComputerData, event.target.parentNode.id);
-  console.log(event.target.parentNode.id)
   displayNewGameView();
 }
 
@@ -77,7 +87,7 @@ function playGame(event) {
   currentGame.human.saveWinsToStorage();
   currentGame.computer.saveWinsToStorage();
   updateCurrentInfo();
-  diplayWinnerInfo();
+  displayWinnerInfo();
 }
 
 function updateCurrentInfo() {
@@ -94,7 +104,7 @@ function updateCurrentInfo() {
   }
 }
 
-function diplayWinnerInfo() {
+function displayWinnerInfo() {
   displayResultsView();
   setTimeout(function() {
     displayGameView();
@@ -107,8 +117,17 @@ function displayResultsView() {
   changeDisplaySource();
   show(humanChoiceImage);
   show(computerChoiceImage);
+  showWinnerIcon();
   show(gameResults);
   changeGameButton.disabled = true;
+}
+
+function showWinnerIcon() {
+  if (currentGame.winner === 'human') {
+    makeVisible(humanIcon);
+  } else if (currentGame.winner === 'computer') {
+    makeVisible(computerIcon);
+  }
 }
 
 function displayGameView() {
@@ -123,6 +142,8 @@ function displayGameView() {
   humanChoiceImage.classList.remove('human-winner-styling');
   computerChoiceImage.classList.remove('computer-winner-styling');
   currentGame.gameReset();
+  makeInvisible(humanIcon);
+  makeInvisible(computerIcon);
 }
 
 function changeDisplaySource() {
