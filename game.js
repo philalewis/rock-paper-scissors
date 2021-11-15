@@ -47,43 +47,10 @@ class Game {
       return this.winnerDeclaration = `It's a tie!`;
     }
     if (this.gameType === 'classical') {
-      if (this.humanChoice === 'socrates' && 
-        this.computerChoice === 'aristotle') {
-          this.winner = 'human';
-      } else if (this.humanChoice === 'plato' &&
-        this.computerChoice === 'socrates') {
-          this.winner = 'human';
-      } else if (this.humanChoice === 'aristotle' &&
-        this.computerChoice === 'plato') {
-          this.winner = 'human';
-      } else {
-        this.winner = 'computer';
-      }
+      this.checkClassicalWinner();
     }
     if (this.gameType === 'existentialism') {
-      if (this.humanChoice === 'dostoevsky' &&
-        (this.computerChoice === 'sartre' || 
-        this.computerChoice === 'kierkegaard')) {
-          this.winner = 'human';
-      } else if (this.humanChoice === 'sartre' &&
-        (this.computerChoice === 'kierkegaard' || 
-        this.computerChoice === 'nietzsche')) {
-          this.winner = 'human';
-      } else if (this.humanChoice === 'kierkegaard' &&
-        (this.computerChoice === 'nietzsche' || 
-        this.computerChoice === 'camus')) {
-          this.winner = 'human';
-      } else if (this.humanChoice === 'nietzsche' &&
-        (this.computerChoice === 'camus' ||
-        this.computerChoice === 'dostoevsky')) {
-          this.winner = 'human';
-      } else if (this.humanChoice === 'camus' && 
-        (this.computerChoice === 'dostoevsky' ||
-        this.computerChoice === 'sartre')) {
-          this.winner = 'human';
-      } else {
-        this.winner = 'computer';
-      }
+      this.checkExistentialismWinner();
     }
     if (this.winner === 'human') {
       this.human.wins++;
@@ -94,6 +61,47 @@ class Game {
       this.computer.wins++;
       this.winnerDeclaration = `You loose!`;
       this.winningQuote = this.quoteOptions[`${this.computerChoice}Bad`];
+    }
+  }
+
+  checkClassicalWinner() {
+    if (this.humanChoice === 'socrates' && 
+    this.computerChoice === 'aristotle') {
+      this.winner = 'human';
+    } else if (this.humanChoice === 'plato' &&
+      this.computerChoice === 'socrates') {
+        this.winner = 'human';
+    } else if (this.humanChoice === 'aristotle' &&
+      this.computerChoice === 'plato') {
+        this.winner = 'human';
+    } else {
+      this.winner = 'computer';
+    }
+  }
+
+  checkExistentialismWinner() {
+    if (this.humanChoice === 'dostoevsky' &&
+      (this.computerChoice === 'sartre' || 
+      this.computerChoice === 'kierkegaard')) {
+        this.winner = 'human';
+    } else if (this.humanChoice === 'sartre' &&
+      (this.computerChoice === 'kierkegaard' || 
+      this.computerChoice === 'nietzsche')) {
+        this.winner = 'human';
+    } else if (this.humanChoice === 'kierkegaard' &&
+      (this.computerChoice === 'nietzsche' || 
+      this.computerChoice === 'camus')) {
+        this.winner = 'human';
+    } else if (this.humanChoice === 'nietzsche' &&
+      (this.computerChoice === 'camus' ||
+      this.computerChoice === 'dostoevsky')) {
+        this.winner = 'human';
+    } else if (this.humanChoice === 'camus' && 
+      (this.computerChoice === 'dostoevsky' ||
+      this.computerChoice === 'sartre')) {
+        this.winner = 'human';
+    } else {
+      this.winner = 'computer';
     }
   }
 
