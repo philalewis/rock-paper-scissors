@@ -91,7 +91,7 @@ function updateCurrentInfo() {
   computerScore.innerText = `Score: ${computerWins}`;
   winningQuote.innerText = currentGame.winningQuote;
   displayWinner.innerText = `${currentGame.winnerDeclaration}`;
-  prompt.innerText = '';
+  // prompt.innerText = '';
   if (currentGame.winner === 'human') {
     humanChoiceImage.classList.add('human-winner-styling');
   } else if (currentGame.winner === 'computer') {
@@ -107,6 +107,7 @@ function diplayWinnerInfo() {
 }
 
 function displayResultsView() {
+  hide(prompt);
   hide(gameButtons);
   changeDisplaySource();
   show(humanChoiceImage);
@@ -116,6 +117,7 @@ function displayResultsView() {
 }
 
 function displayGameView() {
+  show(prompt);
   hide(gameResults);
   hide(humanChoiceImage);
   hide(computerChoiceImage);
