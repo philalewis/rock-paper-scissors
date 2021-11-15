@@ -135,8 +135,8 @@ h3 {
   align-items: center;
 }
 
-.classic-buttons,
-.difficult-buttons {
+.classical-buttons,
+.existentialism-buttons {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -176,22 +176,21 @@ h3 {
   flex-direction: column;
 }
 
-.computer-choice-image,
-.human-choice-image {
+.human-choice-image,
+.computer-choice-image {
   width: 25%;
   height: auto;
-  padding: 5%;
+  margin: 5%;
+  border: 6px solid black;
 }
 
-.computer-choice-image {
-  border: 3px solid black;
+.human-winner-styling {
+  border: 6px solid green;
 }
 
-.human-choice-image {
-  border: 3px solid black;
+.computer-winner-styling {
+  border: 6px solid red;
 }
-
-
 
 .choice {
   width: 25%;
@@ -206,7 +205,7 @@ h3 {
 }
 
 .choice:hover {
-  border: 6px solid steelblue;
+  transform: scale(1.05);
 }
 
 h4 {

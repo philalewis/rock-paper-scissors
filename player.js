@@ -23,12 +23,12 @@ class Player {
     var choices = ['socrates', 'plato', 'aristotle', 'dostoevsky', 'sartre', 'kierkegaard', 'nietzsche', 'camus'];
     if (this.name === 'human') {
       return this.choice = targetId;
-    } else if (gameType === 'classic') {
-      var randomClassicChoice = Math.floor(Math.random() * 3);
-      return this.choice = choices[randomClassicChoice];
-    } else if (gameType === 'difficult') {
-      var randomDifficultChoice = Math.floor(Math.random() * 5 + 3);
-      return this.choice = choices[randomDifficultChoice];
+    } else if (gameType === 'classical') {
+      var randomclassicalChoice = Math.floor(Math.random() * 3);
+      return this.choice = choices[randomclassicalChoice];
+    } else if (gameType === 'existentialism') {
+      var randomexistentialismChoice = Math.floor(Math.random() * 5 + 3);
+      return this.choice = choices[randomexistentialismChoice];
     }
   }
 }

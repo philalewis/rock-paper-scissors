@@ -1,13 +1,11 @@
 var humanScore = document.querySelector('#humanScore');
 var computerScore = document.querySelector('#computerScore');
-var classicGame = document.querySelector('#classic');
-var difficultGame = document.querySelector('#difficult');
+var classicalGame = document.querySelector('#classical');
+var existentialismGame = document.querySelector('#existentialism');
 var gameChoiceContainer = document.querySelector('.game-choice-container');
-var classicButtons = document.querySelector('.classic-buttons');
-var difficultButtons = document.querySelector('.difficult-buttons');
+var classicalButtons = document.querySelector('.classical-buttons');
+var existentialismButtons = document.querySelector('.existentialism-buttons');
 var gameButtons = document.querySelector('.game-buttons');
-var classicButtons = document.querySelector('.classic-buttons');
-var difficultButtons = document.querySelector('.difficult-buttons');
 var choice = document.querySelectorAll('.choice');
 var gameResults = document.querySelector('.game-results');
 var displayWinner = document.querySelector('.display-winner');
@@ -36,13 +34,15 @@ window.onload = function() {
   computerScore.innerText = `Score: ${parsedComputerData.wins}`;
 }
 
-classicGame.addEventListener('click', makeNewClassicGame);
-difficultGame.addEventListener('click', makeNewDifficultGame);
+// Event Listeners
+classicalGame.addEventListener('click', makeNewClassicalGame);
+existentialismGame.addEventListener('click', makeNewExistentialismGame);
 for (var i = 0; i < choice.length; i++) {
   choice[i].addEventListener('click', playGame);
 }
 changeGameButton.addEventListener('click', changeGame);
 
+// Helper functions
 function hide(element) {
   element.classList.add('hidden');
 }
@@ -51,20 +51,21 @@ function show(element) {
   element.classList.remove('hidden');
 }
 
-function makeNewClassicGame() {
-  currentGame = new Game(parsedHumanData, parsedComputerData, 'classic');
+// Event Handlers
+function makeNewClassicalGame() {
+  currentGame = new Game(parsedHumanData, parsedComputerData, 'classical');
   hide(gameChoiceContainer);
   show(gameButtons);
-  hide(difficultButtons);
-  show(classicButtons);
+  hide(existentialismButtons);
+  show(classicalButtons);
 }
 
-function makeNewDifficultGame() {
-  currentGame = new Game(parsedHumanData, parsedComputerData, 'difficult');
+function makeNewExistentialismGame() {
+  currentGame = new Game(parsedHumanData, parsedComputerData, 'existentialism');
   hide(gameChoiceContainer);
   show(gameButtons);
-  hide(classicButtons);
-  show(difficultButtons);
+  hide(classicalButtons);
+  show(existentialismButtons);
 }
 
 function updateCurrentInfo() {
@@ -73,6 +74,12 @@ function updateCurrentInfo() {
   humanScore.innerText = `Score: ${humanWins}`;
   computerScore.innerText = `Score: ${computerWins}`;
   winningQuote.innerText = currentGame.winningQuote;
+  displayWinner.innerText = `${currentGame.winnerDeclaration}`;
+  if (currentGame.winner === 'human') {
+    humanChoiceImage.classList.add('human-winner-styling');
+  } else if (currentGame.winner === 'computer') {
+    computerChoiceImage.classList.add('computer-winner-styling')
+  }
 }
 
 function playGame(event) {
@@ -87,28 +94,37 @@ function playGame(event) {
   diplayWinnerInfo();
 }
 
-function changeDisplaySource() {
-  humanChoiceImage.src = currentGame.humanChoiceImage;
-  computerChoiceImage.src = currentGame.computerChoiceImage;
+function diplayWinnerInfo() {
+  displayResultsView();
+  setTimeout(function() {
+    displayGameView();
+  }, 4000);
 }
 
-function diplayWinnerInfo() {
+function displayResultsView() {
   hide(gameButtons);
-  displayWinner.innerText = `${currentGame.winnerDeclaration}`;
   changeDisplaySource();
   show(humanChoiceImage);
   show(computerChoiceImage);
   show(gameResults);
   changeGameButton.disabled = true;
-  setTimeout(function() {
-    hide(gameResults);
-    hide(humanChoiceImage);
-    hide(computerChoiceImage);
-    show(gameButtons);
-    show(changeGameButton);
-    changeGameButton.disabled = false;
-    currentGame.gameReset();
-  },4000)
+}
+
+function displayGameView() {
+  hide(gameResults);
+  hide(humanChoiceImage);
+  hide(computerChoiceImage);
+  show(gameButtons);
+  show(changeGameButton);
+  changeGameButton.disabled = false;
+  humanChoiceImage.classList.remove('human-winner-styling');
+  computerChoiceImage.classList.remove('computer-winner-styling');
+  currentGame.gameReset();
+}
+
+function changeDisplaySource() {
+  humanChoiceImage.src = currentGame.humanChoiceImage;
+  computerChoiceImage.src = currentGame.computerChoiceImage;
 }
 
 function changeGame() {

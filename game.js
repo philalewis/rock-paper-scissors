@@ -33,7 +33,7 @@ class Game {
   checkForWin() {
     this.humanChoiceImage = `./assets/${this.humanChoice}.jpeg`;
     this.computerChoiceImage = `./assets/${this.computerChoice}.jpeg`;
-    if (this.gameType === 'classic') {
+    if (this.gameType === 'classical') {
       if (this.isATie) {
         return this.winnerDeclaration = `It's a tie!`;
       } else if (this.humanChoice === 'socrates' && 
@@ -54,7 +54,7 @@ class Game {
         this.computer.wins++;
       }
     }
-    if (this.gameType === 'difficult') {
+    if (this.gameType === 'existentialism') {
       if (this.isATie) {
         return this.winnerDeclaration = `It's a tie!`;
       } else if (this.humanChoice === 'dostoevsky' &&
