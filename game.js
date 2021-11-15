@@ -2,8 +2,8 @@ class Game {
   constructor(humanPlayer, computerPlayer, gameType) {
     this.human = new Player(humanPlayer);
     this.computer = new Player(computerPlayer);
-    this.humanChoice;
-    this.computerChoice;
+    this.humanChoice = '';
+    this.computerChoice = '';
     this.gameType = gameType;
     this.winner = '';
     this.winnerDeclaration = '';
@@ -31,8 +31,11 @@ class Game {
     }
   }
   checkForWin() {
+    console.log(this.humanChoice);
     this.humanChoiceImage = `./assets/${this.humanChoice}.jpeg`;
     this.computerChoiceImage = `./assets/${this.computerChoice}.jpeg`;
+    // console.log(this.humanChoiceImage)
+    // console.log(this.computerChoiceImage)
     if (this.gameType === 'classical') {
       if (this.isATie) {
         return this.winnerDeclaration = `It's a tie!`;
@@ -56,7 +59,7 @@ class Game {
     }
     if (this.gameType === 'existentialism') {
       if (this.isATie) {
-        return this.winnerDeclaration = `It's a tie!`;
+        this.winnerDeclaration = `It's a tie!`;
       } else if (this.humanChoice === 'dostoevsky' &&
         (this.computerChoice === 'sartre' || 
         this.computerChoice === 'kierkegaard')) {
@@ -90,12 +93,15 @@ class Game {
     }
     if (this.winner === 'human') {
       this.winnerDeclaration = `You win!`;
+      // console.log(this.quoteOptions[`${this.humanChoice}Good`])
       this.winningQuote = this.quoteOptions[`${this.humanChoice}Good`];
     }
     if (this.winner === 'computer') {
       this.winnerDeclaration = `You loose!`;
-      this.winningQuote = this.quoteOptions[`${this.humanChoice}Bad`];
+      this.winningQuote = this.quoteOptions[`${this.computerChoice}Bad`];
     }
+    // console.log(this.humanChoiceImage)
+    // console.log(this.computerChoiceImage)
   }
   checkForTie() {
     if (this.humanChoice === this.computerChoice) {

@@ -61,6 +61,7 @@ function makeNewClassicalGame() {
 }
 
 function makeNewExistentialismGame() {
+  // console.log(event.target.id)
   currentGame = new Game(parsedHumanData, parsedComputerData, 'existentialism');
   hide(gameChoiceContainer);
   show(gameButtons);
@@ -78,14 +79,13 @@ function updateCurrentInfo() {
   if (currentGame.winner === 'human') {
     humanChoiceImage.classList.add('human-winner-styling');
   } else if (currentGame.winner === 'computer') {
-    computerChoiceImage.classList.add('computer-winner-styling')
+    computerChoiceImage.classList.add('computer-winner-styling');
   }
 }
 
 function playGame(event) {
-  currentGame.humanChoice = currentGame.human.takeTurn(currentGame.gameType, event.target.parentNode.id)
-  currentGame.computerChoice = currentGame.computer.takeTurn(currentGame.gameType, event.target.parentNode.id)
-  console.log(currentGame.humanChoice, currentGame.computerChoice)
+  currentGame.humanChoice = currentGame.human.takeTurn(currentGame.gameType, event.target.parentNode.id);
+  currentGame.computerChoice = currentGame.computer.takeTurn(currentGame.gameType, event.target.parentNode.id);
   currentGame.checkForTie();
   currentGame.checkForWin();
   currentGame.human.saveWinsToStorage();
@@ -96,7 +96,11 @@ function playGame(event) {
 
 function diplayWinnerInfo() {
   displayResultsView();
+  // console.log(currentGame.humanChoiceImage)
+  // console.log(currentGame.computerChoiceImage)
   setTimeout(function() {
+    // console.log(currentGame.humanChoiceImage)
+    // console.log(currentGame.computerChoiceImage)
     displayGameView();
   }, 4000);
 }
@@ -104,6 +108,8 @@ function diplayWinnerInfo() {
 function displayResultsView() {
   hide(gameButtons);
   changeDisplaySource();
+  // console.log(currentGame.humanChoiceImage)
+  // console.log(currentGame.computerChoiceImage)
   show(humanChoiceImage);
   show(computerChoiceImage);
   show(gameResults);
@@ -123,6 +129,8 @@ function displayGameView() {
 }
 
 function changeDisplaySource() {
+  // console.log(currentGame.humanChoiceImage)
+  // console.log(currentGame.computerChoiceImage)
   humanChoiceImage.src = currentGame.humanChoiceImage;
   computerChoiceImage.src = currentGame.computerChoiceImage;
 }
