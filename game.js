@@ -34,8 +34,6 @@ class Game {
     console.log(this.humanChoice);
     this.humanChoiceImage = `./assets/${this.humanChoice}.jpeg`;
     this.computerChoiceImage = `./assets/${this.computerChoice}.jpeg`;
-    // console.log(this.humanChoiceImage)
-    // console.log(this.computerChoiceImage)
     if (this.gameType === 'classical') {
       if (this.isATie) {
         return this.winnerDeclaration = `It's a tie!`;
@@ -93,15 +91,12 @@ class Game {
     }
     if (this.winner === 'human') {
       this.winnerDeclaration = `You win!`;
-      // console.log(this.quoteOptions[`${this.humanChoice}Good`])
       this.winningQuote = this.quoteOptions[`${this.humanChoice}Good`];
     }
     if (this.winner === 'computer') {
       this.winnerDeclaration = `You loose!`;
       this.winningQuote = this.quoteOptions[`${this.computerChoice}Bad`];
     }
-    // console.log(this.humanChoiceImage)
-    // console.log(this.computerChoiceImage)
   }
   checkForTie() {
     if (this.humanChoice === this.computerChoice) {

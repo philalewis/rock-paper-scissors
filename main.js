@@ -17,6 +17,7 @@ var currentGame;
 var parsedHumanData;
 var parsedComputerData;
 
+// When page loads, grab the wins from local storage
 window.onload = function() {
   var retrievedHumanData = localStorage.getItem('human');
   var retrievedComputerData = localStorage.getItem('computer');
@@ -96,11 +97,7 @@ function playGame(event) {
 
 function diplayWinnerInfo() {
   displayResultsView();
-  // console.log(currentGame.humanChoiceImage)
-  // console.log(currentGame.computerChoiceImage)
   setTimeout(function() {
-    // console.log(currentGame.humanChoiceImage)
-    // console.log(currentGame.computerChoiceImage)
     displayGameView();
   }, 4000);
 }
@@ -108,8 +105,8 @@ function diplayWinnerInfo() {
 function displayResultsView() {
   hide(gameButtons);
   changeDisplaySource();
-  // console.log(currentGame.humanChoiceImage)
-  // console.log(currentGame.computerChoiceImage)
+  console.log(humanChoiceImage)
+  console.log(computerChoiceImage)
   show(humanChoiceImage);
   show(computerChoiceImage);
   show(gameResults);
@@ -129,8 +126,6 @@ function displayGameView() {
 }
 
 function changeDisplaySource() {
-  // console.log(currentGame.humanChoiceImage)
-  // console.log(currentGame.computerChoiceImage)
   humanChoiceImage.src = currentGame.humanChoiceImage;
   computerChoiceImage.src = currentGame.computerChoiceImage;
 }
