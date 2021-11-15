@@ -1,7 +1,6 @@
 var humanScore = document.querySelector('#humanScore');
 var computerScore = document.querySelector('#computerScore');
-var classicalGame = document.querySelector('#classical');
-var existentialismGame = document.querySelector('#existentialism');
+var gameChoiceButton = document.querySelectorAll('.game-choice-button');
 var gameChoiceContainer = document.querySelector('.game-choice-container');
 var classicalButtons = document.querySelector('.classical-buttons');
 var existentialismButtons = document.querySelector('.existentialism-buttons');
@@ -37,8 +36,9 @@ window.onload = function() {
 }
 
 // Event Listeners
-classicalGame.addEventListener('click', makeNewClassicalGame);
-existentialismGame.addEventListener('click', makeNewExistentialismGame);
+for (var i = 0; i < gameChoiceButton.length; i++) {
+  gameChoiceButton[i].addEventListener('click', makeNewGame);
+}
 for (var i = 0; i < choice.length; i++) {
   choice[i].addEventListener('click', playGame);
 }
@@ -54,22 +54,34 @@ function show(element) {
 }
 
 // Event Handlers
-function makeNewClassicalGame() {
-  currentGame = new Game(parsedHumanData, parsedComputerData, 'classical');
-  prompt.innerText = 'Choose your philosopher!'
-  hide(gameChoiceContainer);
-  show(gameButtons);
-  hide(existentialismButtons);
-  show(classicalButtons);
+function makeNewGame(event) {
+  currentGame = new Game(parsedHumanData, parsedComputerData, event.target.parentNode.id);
+  console.log(event.target.parentNode.id)
+  displayNewGameView();
 }
 
-function makeNewExistentialismGame() {
-  currentGame = new Game(parsedHumanData, parsedComputerData, 'existentialism');
-  prompt.innerText = 'Choose your philosopher!'
+function displayNewGameView() {
+  prompt.innerText = 'Choose your philosopher!';
   hide(gameChoiceContainer);
   show(gameButtons);
-  hide(classicalButtons);
-  show(existentialismButtons);
+  if (currentGame.gameType === 'classical') {
+    hide(existentialismButtons);
+    show(classicalButtons);
+  } else {
+    hide(classicalButtons);
+    show(existentialismButtons);
+  }
+}
+
+function playGame(event) {
+  currentGame.humanChoice = currentGame.human.takeTurn(currentGame.gameType, event.target.parentNode.id);
+  currentGame.computerChoice = currentGame.computer.takeTurn(currentGame.gameType, event.target.parentNode.id);
+  currentGame.checkForTie();
+  currentGame.checkForWin();
+  currentGame.human.saveWinsToStorage();
+  currentGame.computer.saveWinsToStorage();
+  updateCurrentInfo();
+  diplayWinnerInfo();
 }
 
 function updateCurrentInfo() {
@@ -87,17 +99,6 @@ function updateCurrentInfo() {
   }
 }
 
-function playGame(event) {
-  currentGame.humanChoice = currentGame.human.takeTurn(currentGame.gameType, event.target.parentNode.id);
-  currentGame.computerChoice = currentGame.computer.takeTurn(currentGame.gameType, event.target.parentNode.id);
-  currentGame.checkForTie();
-  currentGame.checkForWin();
-  currentGame.human.saveWinsToStorage();
-  currentGame.computer.saveWinsToStorage();
-  updateCurrentInfo();
-  diplayWinnerInfo();
-}
-
 function diplayWinnerInfo() {
   displayResultsView();
   setTimeout(function() {
@@ -108,8 +109,6 @@ function diplayWinnerInfo() {
 function displayResultsView() {
   hide(gameButtons);
   changeDisplaySource();
-  console.log(humanChoiceImage)
-  console.log(computerChoiceImage)
   show(humanChoiceImage);
   show(computerChoiceImage);
   show(gameResults);
@@ -123,7 +122,7 @@ function displayGameView() {
   show(gameButtons);
   show(changeGameButton);
   changeGameButton.disabled = false;
-  prompt.innerText = 'Choose your philosopher!'
+  prompt.innerText = 'Choose your philosopher!';
   humanChoiceImage.classList.remove('human-winner-styling');
   computerChoiceImage.classList.remove('computer-winner-styling');
   currentGame.gameReset();
@@ -138,6 +137,6 @@ function changeGame() {
   hide(gameButtons);
   hide(changeGameButton);
   show(gameChoiceContainer);
-  prompt.innerText = 'Choose your era!'
+  prompt.innerText = 'Choose your era!';
   currentGame.gameReset();
 }
