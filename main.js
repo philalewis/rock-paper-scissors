@@ -87,15 +87,16 @@ function playGame(event) {
   diplayWinnerInfo();
 }
 
-function displayChoices() {
-  humanChoiceImage.src = `${currentGame.humanChoiceImage}`;
-  computerChoiceImage.src = `${currentGame.computerChoiceImage}`;
+function changeDisplaySource() {
+  humanChoiceImage.src = currentGame.humanChoiceImage;
+  computerChoiceImage.src = currentGame.computerChoiceImage;
 }
 
 function diplayWinnerInfo() {
   hide(gameButtons);
   displayWinner.innerText = `${currentGame.winnerDeclaration}`;
-  displayChoices();
+
+  changeDisplaySource();
   show(humanChoiceImage);
   show(computerChoiceImage);
   show(gameResults);
