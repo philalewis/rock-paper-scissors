@@ -1,6 +1,6 @@
 var quoteOptions = {
   socratesGood: [`Socrates says, `, `"The only true wisdom is in knowing that you know nothing."`],
-  socratesBad: [`Socrates says, `, `"The unexamined life is not worth living"`],
+  socratesBad: [`Socrates says, `, `"The unexamined life is not worth living."`],
   socratesTie: [`Socrates says, `, `"There is only one good, knowledge, and one evil, ignorance."`],
   platoGood: [`Plato says, `, `"Be kind, for everyone you meet is fighting a harder battle."`],
   platoBad: [`Plato says, `, `"Only the dead have seen the end of war."`],

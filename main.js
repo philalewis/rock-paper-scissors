@@ -111,7 +111,6 @@ function takeTurn(player, eventId) {
 
 function updateCurrentInfo() {
   updateScores();
-  console.log()
   philosopher.innerText = `${currentGame.winningQuote[0]}`;
   winningQuote.innerText = `${currentGame.winningQuote[1]}`;
   displayWinner.innerText = `${currentGame.winnerDeclaration}`;
@@ -129,7 +128,7 @@ function displayWinnerInfo() {
   setTimeout(function() {
     updateGameViewInfo();
     displayGameView();
-  }, 4000);
+  }, 8000);
 }
 
 function displayResultsView() {
@@ -193,7 +192,6 @@ function changeGame() {
   hide(changeGameButton);
   show(gameChoiceContainer);
   prompt.innerText = 'Choose your era!';
-  currentGame.gameReset();
 }
 
 //Event handler
