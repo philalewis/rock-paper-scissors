@@ -1,7 +1,6 @@
 var humanScore = document.querySelector('#humanScore');
 var computerScore = document.querySelector('#computerScore');
-var classicalGame = document.querySelector('#classical');
-var existentialismGame = document.querySelector('#existentialism');
+var gameChoiceButton = document.querySelectorAll('.game-choice-button');
 var gameChoiceContainer = document.querySelector('.game-choice-container');
 var classicalButtons = document.querySelector('.classical-buttons');
 var existentialismButtons = document.querySelector('.existentialism-buttons');
@@ -10,39 +9,33 @@ var choice = document.querySelectorAll('.choice');
 var gameResults = document.querySelector('.game-results');
 var displayWinner = document.querySelector('.display-winner');
 var changeGameButton = document.querySelector('#changeGame');
+var clearDataButton = document.querySelector('#clearData');
 var humanChoiceImage = document.querySelector('.human-choice-image');
 var computerChoiceImage = document.querySelector('.computer-choice-image');
 var winningQuote = document.querySelector('.winning-quote');
 var prompt = document.querySelector('.prompt');
-var currentGame;
+var humanIcon = document.querySelector('.human-icon');
+var computerIcon = document.querySelector('.computer-icon');
 var parsedHumanData;
 var parsedComputerData;
+var currentGame;
 
-// When page loads, grab the wins from local storage
 window.onload = function() {
-  var retrievedHumanData = localStorage.getItem('human');
-  var retrievedComputerData = localStorage.getItem('computer');
-  if (retrievedHumanData === null) {
-    parsedHumanData = {name: "human", wins: 0};
-  } else {
-    parsedHumanData = JSON.parse(retrievedHumanData);
-  }
-  if (retrievedComputerData === null) {
-    parsedComputerData = {name: "computer", wins: 0};
-  } else {
-    parsedComputerData = JSON.parse(retrievedComputerData);
-  }
+  getLocalData();
   humanScore.innerText = `Score: ${parsedHumanData.wins}`;
   computerScore.innerText = `Score: ${parsedComputerData.wins}`;
 }
 
 // Event Listeners
-classicalGame.addEventListener('click', makeNewClassicalGame);
-existentialismGame.addEventListener('click', makeNewExistentialismGame);
+for (var i = 0; i < gameChoiceButton.length; i++) {
+  gameChoiceButton[i].addEventListener('click', makeNewGame);
+}
+
 for (var i = 0; i < choice.length; i++) {
   choice[i].addEventListener('click', playGame);
 }
 changeGameButton.addEventListener('click', changeGame);
+clearDataButton.addEventListener('click', clearStorage);
 
 // Helper functions
 function hide(element) {
@@ -53,33 +46,104 @@ function show(element) {
   element.classList.remove('hidden');
 }
 
-// Event Handlers
-function makeNewClassicalGame() {
-  currentGame = new Game(parsedHumanData, parsedComputerData, 'classical');
-  prompt.innerText = 'Choose your philosopher!'
-  hide(gameChoiceContainer);
-  show(gameButtons);
-  hide(existentialismButtons);
-  show(classicalButtons);
+function makeInvisible(element) {
+  element.classList.add('invisible');
 }
 
-function makeNewExistentialismGame() {
-  currentGame = new Game(parsedHumanData, parsedComputerData, 'existentialism');
-  prompt.innerText = 'Choose your philosopher!'
+function makeVisible(element) {
+  element.classList.remove('invisible');
+}
+
+function getLocalData() {
+  var retrievedHumanData = localStorage.getItem('human');
+  var retrievedComputerData = localStorage.getItem('computer');
+  if (retrievedHumanData || retrievedComputerData) {
+    show(clearDataButton);
+  }
+  if (retrievedHumanData === null) {
+    parsedHumanData = {name: "human", wins: 0};
+  } else {
+    parsedHumanData = JSON.parse(retrievedHumanData);
+  }
+  if (retrievedComputerData === null) {
+    parsedComputerData = {name: "computer", wins: 0};
+  } else {
+    parsedComputerData = JSON.parse(retrievedComputerData);
+  }
+}
+
+// New game event handler
+function makeNewGame(event) {
+  getLocalData();
+  currentGame = new Game(parsedHumanData, parsedComputerData, event.target.parentNode.id);
+  prompt.innerText = 'Choose your philosopher!';
+  displayNewGameView();
+}
+
+function displayNewGameView() {
   hide(gameChoiceContainer);
   show(gameButtons);
-  hide(classicalButtons);
-  show(existentialismButtons);
+  if (currentGame.gameType === 'classical') {
+    hide(existentialismButtons);
+    show(classicalButtons);
+  } else {
+    hide(classicalButtons);
+    show(existentialismButtons);
+  }
+}
+
+// Play game event handler
+function playGame(event) {
+  takeTurn('human', event.target.parentNode.id);
+  takeTurn('computer', event.target.parentNode.id);
+  currentGame.checkForTie();
+  currentGame.determineWinner();
+  currentGame.human.saveWinsToStorage();
+  currentGame.computer.saveWinsToStorage();
+  updateCurrentInfo();
+  displayWinnerInfo();
+}
+
+function takeTurn(player, eventId) {
+  currentGame[`${player}Choice`] = currentGame[player].takeTurn(currentGame.gameType, eventId);
 }
 
 function updateCurrentInfo() {
-  var humanWins = currentGame.human.retrieveWinsFromStorage('human');
-  var computerWins = currentGame.computer.retrieveWinsFromStorage('computer');
-  humanScore.innerText = `Score: ${humanWins}`;
-  computerScore.innerText = `Score: ${computerWins}`;
+  updateScores();
+  console.log()
   winningQuote.innerText = currentGame.winningQuote;
   displayWinner.innerText = `${currentGame.winnerDeclaration}`;
-  prompt.innerText = '';
+}
+
+function updateScores() {
+  var humanWins = currentGame.human.retrieveWinsFromStorage();
+  var computerWins = currentGame.computer.retrieveWinsFromStorage();
+  humanScore.innerText = `Score: ${humanWins}`;
+  computerScore.innerText = `Score: ${computerWins}`;
+}
+
+function displayWinnerInfo() {
+  displayResultsView();
+  setTimeout(function() {
+    updateGameViewInfo();
+    displayGameView();
+  }, 4000);
+}
+
+function displayResultsView() {
+  hide(prompt);
+  hide(gameButtons);
+  choosePlayerChoiceImages();
+  show(humanChoiceImage);
+  show(computerChoiceImage);
+  styleWinnerImage();
+  showWinnerIcon();
+  show(gameResults);
+  changeGameButton.disabled = true;
+  clearDataButton.disabled = true;
+}
+
+function styleWinnerImage() {
   if (currentGame.winner === 'human') {
     humanChoiceImage.classList.add('human-winner-styling');
   } else if (currentGame.winner === 'computer') {
@@ -87,57 +151,56 @@ function updateCurrentInfo() {
   }
 }
 
-function playGame(event) {
-  currentGame.humanChoice = currentGame.human.takeTurn(currentGame.gameType, event.target.parentNode.id);
-  currentGame.computerChoice = currentGame.computer.takeTurn(currentGame.gameType, event.target.parentNode.id);
-  currentGame.checkForTie();
-  currentGame.checkForWin();
-  currentGame.human.saveWinsToStorage();
-  currentGame.computer.saveWinsToStorage();
-  updateCurrentInfo();
-  diplayWinnerInfo();
+function showWinnerIcon() {
+  if (currentGame.winner === 'human') {
+    makeVisible(humanIcon);
+  } else if (currentGame.winner === 'computer') {
+    makeVisible(computerIcon);
+  }
 }
 
-function diplayWinnerInfo() {
-  displayResultsView();
-  setTimeout(function() {
-    displayGameView();
-  }, 4000);
-}
-
-function displayResultsView() {
-  hide(gameButtons);
-  changeDisplaySource();
-  console.log(humanChoiceImage)
-  console.log(computerChoiceImage)
-  show(humanChoiceImage);
-  show(computerChoiceImage);
-  show(gameResults);
-  changeGameButton.disabled = true;
+function updateGameViewInfo() {
+  changeGameButton.disabled = false;
+  clearDataButton.disabled = false;
+  prompt.innerText = 'Choose your philosopher!';
+  currentGame.gameReset();
 }
 
 function displayGameView() {
+  show(prompt);
   hide(gameResults);
   hide(humanChoiceImage);
   hide(computerChoiceImage);
   show(gameButtons);
   show(changeGameButton);
-  changeGameButton.disabled = false;
-  prompt.innerText = 'Choose your philosopher!'
+  show(clearDataButton);
   humanChoiceImage.classList.remove('human-winner-styling');
   computerChoiceImage.classList.remove('computer-winner-styling');
-  currentGame.gameReset();
+  makeInvisible(humanIcon);
+  makeInvisible(computerIcon);
 }
 
-function changeDisplaySource() {
+function choosePlayerChoiceImages() {
   humanChoiceImage.src = currentGame.humanChoiceImage;
   computerChoiceImage.src = currentGame.computerChoiceImage;
 }
 
+//Event Handler
 function changeGame() {
   hide(gameButtons);
   hide(changeGameButton);
   show(gameChoiceContainer);
-  prompt.innerText = 'Choose your era!'
+  prompt.innerText = 'Choose your era!';
   currentGame.gameReset();
+}
+
+//Event handler
+function clearStorage() {
+  localStorage.clear();
+  parsedHumanData = {name: 'human', wins: 0};
+  parsedComputerData = {name: 'computer', wins: 0};
+  humanScore.innerText = `Score: 0`;
+  computerScore.innerText = `Score: 0`;
+  changeGame();
+  hide(clearDataButton);
 }

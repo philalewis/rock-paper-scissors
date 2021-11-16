@@ -53,6 +53,10 @@
           <img src="" class="human-choice-image" alt="human choice">
           <img src="" class="computer-choice-image" alt="computer choice">
         </section>
+        <section class="winner-token">
+          <img src="./assets/human.svg" alt="human icon" class="human-icon invisible">
+          <img src="./assets/computer.svg" alt="computer icon" class="computer-icon invisible">
+        </section>
         <p class="display-winner"></p>
         <p class="winning-quote"></p>
       </section>
@@ -61,9 +65,11 @@
       <img class="icon" src="./assets/computer.svg" alt="computer image">
       <h2 class="sidebar-title">Computer</h2>
       <p class="score-display" id="computerScore">Score: 0</p>
+      <button class="clear-data hidden" id="clearData">Reset Scores</button>
       <img class="greek-column" src="./assets/column.svg" alt="greek column">
     </section>
   </body>
+  <script type="text/javascript" src="quotes.js"></script>
   <script type="text/javascript" src="player.js"></script>
   <script type="text/javascript" src="game.js"></script>
   <script type="text/javascript" src="main.js"></script>

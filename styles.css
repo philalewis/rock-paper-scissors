@@ -52,11 +52,11 @@ html,
 body {
   height: 100%;
   width: 100%;
-  background-color: lightsteelblue;
+  background-color: #D8E2EF;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Georgia, serif;
 }
 
 .sidebar {
@@ -87,27 +87,19 @@ body {
   margin: 1vh;
 }
 
-.change-game {
+.change-game,
+.clear-data {
   position: fixed;
   bottom: 55%;
   font-size: 2vh;
   padding: .4%;
-  background-color: #C8C8C7;
+  background-color: #D8E2EF;
   border: 2px solid black;
   border-radius: 5px;
 }
 
 button:hover {
   cursor: pointer;
-}
-
-.change-game:hover {
-  background-color: lightsteelblue;
-}
-
-.change-game:disabled {
-  background-color: #C8C8C7;
-  cursor: default;
 }
 
 .main-container {
@@ -153,20 +145,27 @@ h3 {
   flex-direction: column;
   align-items: center;
   margin: 5vh;
-  background-color: inherit;
+  background-color: #C0D0E5;
   border-radius: 12px;
   border: 3px solid steelblue;
   width: 50%;
+  font-family: Georgia, serif;
 }
 
 .game-choice-button:hover {
-  background-color: #C8C8C7;
+  background-color: lightsteelblue;
 }
 
 .game-choice-button>p {
-  font-size: 120%;
-  padding: 5%;
-  width: 85%;
+  font-size: 150%;
+  width: 98%;
+  padding: 2%;
+}
+
+h4 {
+  font-size: 300%;
+  width: 98%;
+  padding: 2%;
 }
 
 .choice-image {
@@ -184,7 +183,7 @@ h3 {
 .display-winner,
 .winning-quote {
   text-align: center;
-  margin: 3%;
+  margin: 2%;
 }
 
 .display-winner {
@@ -197,7 +196,7 @@ h3 {
 
 .game-results-images {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
 }
 
 .human-choice-image,
@@ -216,6 +215,19 @@ h3 {
   border: 6px solid red;
 }
 
+.winner-token {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.human-icon,
+.computer-icon {
+  width: 4%;
+  height: auto;
+}
+
 .choice {
   width: 25%;
   height: auto;
@@ -228,15 +240,30 @@ h3 {
   padding: 0;
 }
 
-.choice:hover {
-  transform: scale(1.05);
+.choice:hover,
+.game-choice-button:hover,
+.change-game:hover,
+.clear-data {
+  transform: scale(1.02);
+  transition-duration: .15s;
 }
 
-h4 {
-  font-size: 4vh;
-  margin: 1vh;
+.change-game:hover,
+.clear-data:hover {
+  background-color: lightsteelblue;
+}
+
+.change-game:disabled,
+.clear-data:disabled {
+  background-color: #C8C8C7;
+  cursor: default;
+  transform: none;
 }
 
 .hidden {
   display: none;
+}
+
+.invisible {
+  visibility: hidden;
 }
