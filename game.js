@@ -41,25 +41,25 @@ class Game {
 
   determineWinner() {
     if (this.isATie) {
-      this.winnerDeclaration = `It's a tie!`;
-      this.winningQuote = this.quoteOptions[`${this.humanChoice}Tie`];
-    }
-    if (this.gameType === 'classical') {
+      return this.updateGameData();
+    } else if (this.gameType === 'classical') {
       this.checkClassicalWinner();
-    }
-    if (this.gameType === 'existentialism') {
+    } else if (this.gameType === 'existentialism') {
       this.checkExistentialismWinner();
     }
     this.updateGameData();
   }
 
   updateGameData() {
-    if (this.winner === 'human') {
+    // console.log("HumanChoice: ", this.humanChoice, "ComputerChoice: ", this.computerChoice, "Winner: ", this.winner)
+    if (this.isATie) {
+      this.winnerDeclaration = `It's a tie!`
+      this.winningQuote = this.quoteOptions[`${this.humanChoice}Tie`];
+    } else if (this.winner === 'human') {
       this.human.wins++;
       this.winnerDeclaration = `You win!`;
       this.winningQuote = this.quoteOptions[`${this.humanChoice}Good`];
-    }
-    if (this.winner === 'computer') {
+    } else if (this.winner === 'computer') {
       this.computer.wins++;
       this.winnerDeclaration = `You loose!`;
       this.winningQuote = this.quoteOptions[`${this.computerChoice}Bad`];
@@ -116,9 +116,10 @@ class Game {
   checkForTie() {
     if (this.humanChoice === this.computerChoice) {
       this.winner = 'nobody';
-      return this.isATie = true;
+      this.isATie = true;
+    } else {
+      this.isATie = false;
     }
-    return this.isATie = false;
   }
 
   gameReset() {

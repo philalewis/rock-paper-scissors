@@ -23,9 +23,6 @@ var currentGame;
 window.onload = function() {
   var retrievedHumanData = localStorage.getItem('human');
   var retrievedComputerData = localStorage.getItem('computer');
-
-  
-
   if (retrievedHumanData || retrievedComputerData) {
     show(clearDataButton);
   }
@@ -43,7 +40,7 @@ window.onload = function() {
   computerScore.innerText = `Score: ${parsedComputerData.wins}`;
 }
 
-//Event Listeners
+// Event Listeners
 for (var i = 0; i < gameChoiceButton.length; i++) {
   gameChoiceButton[i].addEventListener('click', makeNewGame);
 }
@@ -51,11 +48,10 @@ for (var i = 0; i < gameChoiceButton.length; i++) {
 for (var i = 0; i < choice.length; i++) {
   choice[i].addEventListener('click', playGame);
 }
-
 changeGameButton.addEventListener('click', changeGame);
 clearDataButton.addEventListener('click', clearStorage);
 
-//Helper functions
+// Helper functions
 function hide(element) {
   element.classList.add('hidden');
 }
@@ -75,6 +71,7 @@ function makeVisible(element) {
 // New game event handler
 function makeNewGame(event) {
   currentGame = new Game(parsedHumanData, parsedComputerData, event.target.parentNode.id);
+  // console.log(currentGame)
   prompt.innerText = 'Choose your philosopher!';
   displayNewGameView();
 }
@@ -114,8 +111,8 @@ function updateCurrentInfo() {
 }
 
 function updateScores() {
-  var humanWins = currentGame.human.retrieveWinsFromStorage('human');
-  var computerWins = currentGame.computer.retrieveWinsFromStorage('computer');
+  var humanWins = currentGame.human.retrieveWinsFromStorage();
+  var computerWins = currentGame.computer.retrieveWinsFromStorage();
   humanScore.innerText = `Score: ${humanWins}`;
   computerScore.innerText = `Score: ${computerWins}`;
 }
@@ -123,8 +120,9 @@ function updateScores() {
 function displayWinnerInfo() {
   displayResultsView();
   setTimeout(function() {
+    updateGameViewInfo();
     displayGameView();
-  }, 4000);
+  }, 1000);
 }
 
 function displayResultsView() {
@@ -156,8 +154,14 @@ function showWinnerIcon() {
   }
 }
 
+function updateGameViewInfo() {
+  changeGameButton.disabled = false;
+  clearDataButton.disabled = false;
+  prompt.innerText = 'Choose your philosopher!';
+  currentGame.gameReset();
+}
+
 function displayGameView() {
-  updateGameViewInfo();
   show(prompt);
   hide(gameResults);
   hide(humanChoiceImage);
@@ -169,13 +173,6 @@ function displayGameView() {
   computerChoiceImage.classList.remove('computer-winner-styling');
   makeInvisible(humanIcon);
   makeInvisible(computerIcon);
-}
-
-function updateGameViewInfo() {
-  changeGameButton.disabled = false;
-  clearDataButton.disabled = false;
-  prompt.innerText = 'Choose your philosopher!';
-  currentGame.gameReset();
 }
 
 function choosePlayerChoiceImages() {
@@ -195,9 +192,10 @@ function changeGame() {
 //Event handler
 function clearStorage() {
   localStorage.clear();
-  console.log(localStorage('human'));
-  updateScores();
-  // localStorage.clear('human');
-  // localStorage.clear('computer');
+  parsedHumanData = {name: 'human', wins: 0};
+  parsedComputerData = {name: 'computer', wins: 0}
+  humanScore.innerText = `Score: 0`;
+  computerScore.innerText = `Score: 0`;
+  changeGame();
   hide(clearDataButton);
 }

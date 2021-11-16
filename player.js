@@ -16,8 +16,8 @@ class Player {
     localStorage.setItem(playerData.name, stringifiedPlayerData);
   }
 
-  retrieveWinsFromStorage(player) {
-    var retrievedPlayerData = localStorage.getItem(player);
+  retrieveWinsFromStorage() {
+    var retrievedPlayerData = localStorage.getItem(this.name);
     var parsedPlayerData = JSON.parse(retrievedPlayerData);
     return parsedPlayerData.wins;
   }
