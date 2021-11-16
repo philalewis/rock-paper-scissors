@@ -13,6 +13,7 @@ var clearDataButton = document.querySelector('#clearData');
 var humanChoiceImage = document.querySelector('.human-choice-image');
 var computerChoiceImage = document.querySelector('.computer-choice-image');
 var winningQuote = document.querySelector('.winning-quote');
+var philosopher = document.querySelector('.philosopher');
 var prompt = document.querySelector('.prompt');
 var humanIcon = document.querySelector('.human-icon');
 var computerIcon = document.querySelector('.computer-icon');
@@ -111,7 +112,8 @@ function takeTurn(player, eventId) {
 function updateCurrentInfo() {
   updateScores();
   console.log()
-  winningQuote.innerText = currentGame.winningQuote;
+  philosopher.innerText = `${currentGame.winningQuote[0]}`;
+  winningQuote.innerText = `${currentGame.winningQuote[1]}`;
   displayWinner.innerText = `${currentGame.winnerDeclaration}`;
 }
 

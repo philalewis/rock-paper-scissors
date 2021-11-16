@@ -9,6 +9,7 @@ class Game {
     this.winnerDeclaration = '';
     this.humanChoiceImage = '';
     this.computerChoiceImage = '';
+    
     this.winningQuote = '';
     this.isATie = null;
     this.quoteOptions = quoteOptions;
