@@ -87,7 +87,8 @@ body {
   margin: 1vh;
 }
 
-.change-game {
+.change-game,
+.clear-data {
   position: fixed;
   bottom: 55%;
   font-size: 2vh;
@@ -241,16 +242,19 @@ h4 {
 
 .choice:hover,
 .game-choice-button:hover,
-.change-game:hover {
+.change-game:hover,
+.clear-data {
   transform: scale(1.02);
   transition-duration: .15s;
 }
 
-.change-game:hover {
+.change-game:hover,
+.clear-data:hover {
   background-color: lightsteelblue;
 }
 
-.change-game:disabled {
+.change-game:disabled,
+.clear-data:disabled {
   background-color: #C8C8C7;
   cursor: default;
   transform: none;

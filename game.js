@@ -39,12 +39,10 @@ class Game {
     }
   }
 
-  checkForWin() {
-    this.humanChoiceImage = `./assets/${this.humanChoice}.jpeg`;
-    this.computerChoiceImage = `./assets/${this.computerChoice}.jpeg`;
+  determineWinner() {
     if (this.isATie) {
+      this.winnerDeclaration = `It's a tie!`;
       this.winningQuote = this.quoteOptions[`${this.humanChoice}Tie`];
-      return this.winnerDeclaration = `It's a tie!`;
     }
     if (this.gameType === 'classical') {
       this.checkClassicalWinner();
@@ -52,6 +50,10 @@ class Game {
     if (this.gameType === 'existentialism') {
       this.checkExistentialismWinner();
     }
+    this.updateGameData();
+  }
+
+  updateGameData() {
     if (this.winner === 'human') {
       this.human.wins++;
       this.winnerDeclaration = `You win!`;
@@ -62,6 +64,12 @@ class Game {
       this.winnerDeclaration = `You loose!`;
       this.winningQuote = this.quoteOptions[`${this.computerChoice}Bad`];
     }
+    this.updateImageSources();
+  }
+
+  updateImageSources() {
+    this.humanChoiceImage = `./assets/${this.humanChoice}.jpeg`;
+    this.computerChoiceImage = `./assets/${this.computerChoice}.jpeg`;
   }
 
   checkClassicalWinner() {
