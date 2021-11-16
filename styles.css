@@ -81,9 +81,13 @@ body {
   bottom: 2%;
 }
 
-.score-display,
 .sidebar-title {
   font-size: 4vh;
+  margin: 1vh;
+}
+
+.score-display {
+  font-size: 3vh;
   margin: 1vh;
 }
 
@@ -121,7 +125,7 @@ h3 {
 }
 
 .prompt {
-  margin-bottom: 3vh;
+  margin-bottom: 2vh;
 }
 
 .game-choice-container {
@@ -152,12 +156,8 @@ h3 {
   font-family: Georgia, serif;
 }
 
-.game-choice-button:hover {
-  background-color: lightsteelblue;
-}
-
 .game-choice-button>p {
-  font-size: 150%;
+  font-size: 160%;
   width: 98%;
   padding: 2%;
 }
@@ -185,6 +185,14 @@ h4 {
 .philosopher {
   text-align: center;
   margin: 2% 0 2% 0;
+}
+
+.philosopher {
+  margin-left: 2%;
+}
+
+.winning-quote {
+  margin-right: 2%;
 }
 
 .display-winner {
@@ -251,11 +259,15 @@ h4 {
   padding: 0;
 }
 
+.game-choice-button:hover {
+  background-color: lightsteelblue;
+}
+
 .choice:hover,
 .game-choice-button:hover,
 .change-game:hover,
-.clear-data {
-  transform: scale(1.02);
+.clear-data:hover {
+  transform: scale(1.05);
   transition-duration: .15s;
 }
 

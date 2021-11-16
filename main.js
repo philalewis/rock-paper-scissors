@@ -128,7 +128,7 @@ function displayWinnerInfo() {
   setTimeout(function() {
     updateGameViewInfo();
     displayGameView();
-  }, 8000);
+  }, 4000);
 }
 
 function displayResultsView() {
