@@ -1,7 +1,6 @@
 class Player {
   constructor(player) {
     this.name = player.name;
-    // this.token = player.token;
     this.wins = player.wins || 0;
     this.choice = '';
   }
@@ -9,7 +8,6 @@ class Player {
   saveWinsToStorage() {
     var playerData = {
       name: this.name,
-      // token: this.token,
       wins: this.wins
     }
     var stringifiedPlayerData = JSON.stringify(playerData);
