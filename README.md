@@ -62,7 +62,7 @@ This app is a variation of the classic rock-paper-scissors game, but instead of 
 
 -HTML, CSS, Javascript
 
-The spec for this project can be found [here](https://frontend.turing.edu/projects/module-1/rock-paper-scissors-solo.html){:target="\_blank"}.
+The spec for this project can be found [here](https://frontend.turing.edu/projects/module-1/rock-paper-scissors-solo.html).
 
 ## Installation Instructions
 
