@@ -8,7 +8,7 @@ This app is a variation of the classic rock-paper-scissors game, but instead of 
 
 1. When the app loads, two large buttons appear in the middle of the screeen. The user is prompted to choose which edition to play. The rules for each edition are displayed on the buttons.
 
-<img width="1440" alt="Screen Shot 2021-11-16 at 7 19 48 AM" src="https://user-images.githubusercontent.com/65195952/142007216-8e7d02c0-c080-4078-89f9-d28a4a97ca1a.png">
+<img width="1440" alt="Screen Shot 2021-11-16 at 7 57 07 AM" src="https://user-images.githubusercontent.com/65195952/142008903-5e9db73d-cf3f-42c9-9760-de9318b89dad.png">
 
 2. If the user has played the game before, and has not cleared local storage, previous wins are displayed upon page load.
 
@@ -19,8 +19,6 @@ This app is a variation of the classic rock-paper-scissors game, but instead of 
 <img width="1440" alt="Screen Shot 2021-11-16 at 7 22 40 AM" src="https://user-images.githubusercontent.com/65195952/142007432-9155e26f-9e89-4cfc-8179-f0b3603849fd.png">
 
 4. Once the user makes a selection, the buttons go away and the results are dipslayed. The user's choice is diplsayed on the left, while the computer's is displayed on the right, which correspond to the sides of the screen the player's scores are displayed.
-
-<img width="1440" alt="Screen Shot 2021-11-16 at 7 19 48 AM" src="https://user-images.githubusercontent.com/65195952/142007805-d403225e-ab71-41bf-94bd-a6a6913680e7.png">
 
 5. The results view tells the user whether they won, lost, or tied. If the user wins, the selection on the left is shown with a green border and the user's icon is displayed below the user's choice, showing that the user's choice did, indeed, win.
 
@@ -64,7 +62,7 @@ This app is a variation of the classic rock-paper-scissors game, but instead of 
 
 -HTML, CSS, Javascript
 
-The spec for this project can be found [here](https://frontend.turing.edu/projects/module-1/rock-paper-scissors-solo.html).
+The spec for this project can be found [here](https://frontend.turing.edu/projects/module-1/rock-paper-scissors-solo.html){:target="\_blank"}.
 
 ## Installation Instructions
 
