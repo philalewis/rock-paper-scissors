@@ -181,17 +181,28 @@ h4 {
 }
 
 .display-winner,
-.winning-quote {
+.winning-quote,
+.philosopher {
   text-align: center;
-  margin: 2%;
+  margin: 2% 0 2% 0;
 }
 
 .display-winner {
   font-size: 4vh;
 }
 
-.winning-quote {
+.winning-quote,
+.philosopher {
   font-size: 2.5vh;
+  display: inline;
+}
+
+.winning-quote {
+  font-style: italic;
+}
+
+.quote {
+  text-align: center;
 }
 
 .game-results-images {
