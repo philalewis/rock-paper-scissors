@@ -48,8 +48,8 @@ class Game {
 
   checkClassicalWinner() {
     if (this.humanChoice === 'socrates' && 
-    this.computerChoice === 'aristotle') {
-      this.winner = 'human';
+      this.computerChoice === 'aristotle') {
+        this.winner = 'human';
     } else if (this.humanChoice === 'plato' &&
       this.computerChoice === 'socrates') {
         this.winner = 'human';
@@ -57,7 +57,7 @@ class Game {
       this.computerChoice === 'plato') {
         this.winner = 'human';
     } else {
-      this.winner = 'computer';
+        this.winner = 'computer';
     }
   }
 
@@ -97,8 +97,6 @@ class Game {
   }
 
   gameReset() {
-    // this.human.saveWinsToStorage();
-    // this.computer.saveWinsToStorage();
     this.humanChoice = '';
     this.computerChoice = '';
     this.winner = '';

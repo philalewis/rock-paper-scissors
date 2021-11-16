@@ -21,21 +21,7 @@ var parsedComputerData;
 var currentGame;
 
 window.onload = function() {
-  var retrievedHumanData = localStorage.getItem('human');
-  var retrievedComputerData = localStorage.getItem('computer');
-  if (retrievedHumanData || retrievedComputerData) {
-    show(clearDataButton);
-  }
-  if (retrievedHumanData === null) {
-    parsedHumanData = {name: "human", wins: 0};
-  } else {
-    parsedHumanData = JSON.parse(retrievedHumanData);
-  }
-  if (retrievedComputerData === null) {
-    parsedComputerData = {name: "computer", wins: 0};
-  } else {
-    parsedComputerData = JSON.parse(retrievedComputerData);
-  }
+  getLocalData();
   humanScore.innerText = `Score: ${parsedHumanData.wins}`;
   computerScore.innerText = `Score: ${parsedComputerData.wins}`;
 }
@@ -68,11 +54,28 @@ function makeVisible(element) {
   element.classList.remove('invisible');
 }
 
+function getLocalData() {
+  var retrievedHumanData = localStorage.getItem('human');
+  var retrievedComputerData = localStorage.getItem('computer');
+  if (retrievedHumanData || retrievedComputerData) {
+    show(clearDataButton);
+  }
+  if (retrievedHumanData === null) {
+    parsedHumanData = {name: "human", wins: 0};
+  } else {
+    parsedHumanData = JSON.parse(retrievedHumanData);
+  }
+  if (retrievedComputerData === null) {
+    parsedComputerData = {name: "computer", wins: 0};
+  } else {
+    parsedComputerData = JSON.parse(retrievedComputerData);
+  }
+}
+
 // New game event handler
 function makeNewGame(event) {
-  // console.log(parsedComputerData, parsedHumanData)
+  getLocalData();
   currentGame = new Game(parsedHumanData, parsedComputerData, event.target.parentNode.id);
-  // console.log(currentGame)
   prompt.innerText = 'Choose your philosopher!';
   displayNewGameView();
 }
@@ -107,6 +110,7 @@ function takeTurn(player, eventId) {
 
 function updateCurrentInfo() {
   updateScores();
+  console.log()
   winningQuote.innerText = currentGame.winningQuote;
   displayWinner.innerText = `${currentGame.winnerDeclaration}`;
 }
@@ -123,7 +127,7 @@ function displayWinnerInfo() {
   setTimeout(function() {
     updateGameViewInfo();
     displayGameView();
-  }, 1000);
+  }, 4000);
 }
 
 function displayResultsView() {
@@ -182,24 +186,19 @@ function choosePlayerChoiceImages() {
 }
 
 //Event Handler
-function changeGame(event) {
-  event.preventDefault();
-  currentGame.human.saveWinsToStorage();
-  currentGame.computer.saveWinsToStorage();
+function changeGame() {
   hide(gameButtons);
   hide(changeGameButton);
   show(gameChoiceContainer);
   prompt.innerText = 'Choose your era!';
-  // currentGame.human.saveWinsToStorage();
-  // currentGame.computer.saveWinsToStorage();
-  // currentGame.gameReset();
+  currentGame.gameReset();
 }
 
 //Event handler
 function clearStorage() {
   localStorage.clear();
   parsedHumanData = {name: 'human', wins: 0};
-  parsedComputerData = {name: 'computer', wins: 0}
+  parsedComputerData = {name: 'computer', wins: 0};
   humanScore.innerText = `Score: 0`;
   computerScore.innerText = `Score: 0`;
   changeGame();
