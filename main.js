@@ -62,12 +62,12 @@ function getLocalData() {
     show(clearDataButton);
   }
   if (retrievedHumanData === null) {
-    parsedHumanData = {name: "human", wins: 0};
+    parsedHumanData = {name: 'human', wins: 0};
   } else {
     parsedHumanData = JSON.parse(retrievedHumanData);
   }
   if (retrievedComputerData === null) {
-    parsedComputerData = {name: "computer", wins: 0};
+    parsedComputerData = {name: 'computer', wins: 0};
   } else {
     parsedComputerData = JSON.parse(retrievedComputerData);
   }
