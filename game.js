@@ -64,24 +64,19 @@ class Game {
 
   checkExistentialismWinner() {
     if (this.humanChoice === 'dostoevsky' &&
-      (this.computerChoice === 'sartre' || 
-      this.computerChoice === 'kierkegaard')) {
+      (this.computerChoice === 'sartre' || 'kierkegaard')) {
         this.winner = 'human';
     } else if (this.humanChoice === 'sartre' &&
-      (this.computerChoice === 'kierkegaard' || 
-      this.computerChoice === 'nietzsche')) {
+      (this.computerChoice === 'kierkegaard' || 'nietzsche')) {
         this.winner = 'human';
     } else if (this.humanChoice === 'kierkegaard' &&
-      (this.computerChoice === 'nietzsche' || 
-      this.computerChoice === 'camus')) {
+      (this.computerChoice === 'nietzsche' || 'camus')) {
         this.winner = 'human';
     } else if (this.humanChoice === 'nietzsche' &&
-      (this.computerChoice === 'camus' ||
-      this.computerChoice === 'dostoevsky')) {
+      (this.computerChoice === 'camus' || 'dostoevsky')) {
         this.winner = 'human';
     } else if (this.humanChoice === 'camus' && 
-      (this.computerChoice === 'dostoevsky' ||
-      this.computerChoice === 'sartre')) {
+      (this.computerChoice === 'dostoevsky' || 'sartre')) {
         this.winner = 'human';
     } else {
       this.winner = 'computer';
