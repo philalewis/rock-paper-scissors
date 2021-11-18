@@ -36,7 +36,7 @@ class Game {
       this.winningQuote = this.quoteOptions[`${this.humanChoice}Good`];
     } else if (this.winner === 'computer') {
       this.computer.wins++;
-      this.winnerDeclaration = `You loose!`;
+      this.winnerDeclaration = `You lose!`;
       this.winningQuote = this.quoteOptions[`${this.computerChoice}Bad`];
     }
     this.updateImageSources();
