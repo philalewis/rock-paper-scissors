@@ -4,6 +4,10 @@
 
 This app is a variation of the classic rock-paper-scissors game, but instead of choosing rock, paper, or scissorts, players choose philosophers. The user plays as the human player and the program makes random chances as the computer player. There are two editions of the game: 'Classical' and 'Existentialism'. The classical edition offers three choices: Socrates, Plato, and Aristotle. The existentialism edition offers five choices: Fyodor Dostoevsky, Jean-Paul Sartre, Søren Kierkegaard, Friedrich Nietzsche, and Albert Camus.
 
+## Where to Play?
+
+You can view the deployed site and play the game [here](https://philalewis.github.io/rock-paper-scissors/).
+
 ## How Does It Work?
 
 1. When the app loads, two large buttons appear in the middle of the screeen. The user is prompted to choose which edition to play. The rules for each edition are displayed on the buttons.
